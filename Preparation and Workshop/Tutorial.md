@@ -69,7 +69,7 @@ to have you to do so by running your first piece of R code.
 To begin, you need to open an R script by using the menu that drops down
 from the top-left icon:
 
-![](Images/open_script.png)
+![](Preparation%20and%20Workshop/Images/open_script.png)
 
 In the script you have opened, you now need enter a command to set the
 working directory. For simplicitly, you can set your directory to the
@@ -91,7 +91,7 @@ You will need to adapt the code I provided above to match the naming
 conventions on your machine (i.e., substitute in your own username,
 etc). On my machine - a Mac - I type and run the following line of code:
 
-![](Images/run_set_wd.png)
+![](Preparation%20and%20Workshop/Images/run_set_wd.png)
 
 As shown in the screenshot above, to run a chunk of code in the editor,
 simply select the line/s of code you want to run and then click on the
@@ -113,7 +113,7 @@ browser pane of your RStudio interface.
 
 You want to see something that looks like the following:
 
-![](Images/download_data.png)
+![](Preparation%20and%20Workshop/Images/download_data.png)
 
 ### Install and load packages
 
@@ -166,12 +166,12 @@ tidy-version of a data frame), ‘AFL\_data\_set’.
 If all goes as planned, you should see ‘AFL\_data\_set’ show up in the
 environment pane:
 
-![](Images/enviro_pane.png)
+![](Preparation%20and%20Workshop/Images/enviro_pane.png)
 
 If you click on ‘AFL\_data\_set’, a spreadsheet-tyle viewer will display
 the data in the source editor:
 
-![](Images/viewer.png)
+![](Preparation%20and%20Workshop/Images/viewer.png)
 
 ### Examine the contents and structure of the data set
 
@@ -1456,4 +1456,4 @@ work that goes on in industry. As such, many employers are very keen to
 hire graduates for accounting and finance roles that have a solid grasp
 of R…
 
-![](Images/data_science_jobs.jpg)
+![](Preparation%20and%20Workshop/Images/data_science_jobs.jpg)

@@ -42,7 +42,7 @@ With the installation out of the way, you are now ready to start working in R. F
 
 To begin, you need to open an R script by using the menu that drops down from the top-left icon:
 
-![](Images/open_script.png)
+![](Preparation and Workshop/Images/open_script.png)
 
 In the script you have opened, you now need enter a command to set the working directory. For simplicitly, you can set your directory to the desktop. If you are working on a Mac, you will need to type something like the following:
 
@@ -58,7 +58,7 @@ setwd("C:\Users\username\Desktop")
 
 You will need to adapt the code I provided above to match the naming conventions on your machine (i.e., substitute in your own username, etc). On my machine - a Mac - I type and run the following line of code:
 
-![](Images/run_set_wd.png)
+![](Preparation and Workshop/Images/run_set_wd.png)
 
 As shown in the screenshot above, to run a chunk of code in the editor, simply select the line/s of code you want to run and then click on the 'Run' icon in the source editor pane (alternatively, if you are on a Mac, you can highlight the code and hit Ctrl+Enter). You will see the same line of code show up in the console pane below the source editor (if it is accompanied by an error message, something has gone wrong and your working directory will not be set to the desktop).
 
@@ -70,7 +70,7 @@ Next, you need to move this file to the desktop on your computer. Once you have 
 
 You want to see something that looks like the following:
 
-![](Images/download_data.png)
+![](Preparation and Workshop/Images/download_data.png)
 
 ### Install and load packages
 
@@ -102,11 +102,11 @@ Most of the code you will write in R follows this same basic structure: you are 
 
 If all goes as planned, you should see 'AFL_data_set' show up in the environment pane:
 
-![](Images/enviro_pane.png)
+![](Preparation and Workshop/Images/enviro_pane.png)
 
 If you click on 'AFL_data_set', a spreadsheet-tyle viewer will display the data in the source editor:
 
-![](Images/viewer.png)
+![](Preparation and Workshop/Images/viewer.png)
 
 ### Examine the contents and structure of the data set
 
@@ -311,5 +311,5 @@ In this tutorial, I will show you how to setup R, perform some basic commands, a
 
 Hopefully, this tutorial has also given you taste for the sort of analysis you can perform using R. As I stated earlier in class, R is great language that you learn on your own using free online resources. And, one final comment: What I have taught you has real-world applications; in fact, it is excatly the sort of basic 'data science' work that goes on in industry. As such, many employers are very keen to hire graduates for accounting and finance roles that have a solid grasp of R...
 
-![](Images/data_science_jobs.jpg)
+![](Preparation and Workshop/Images/data_science_jobs.jpg)
 
