@@ -1,0 +1,15 @@
+Variable	Definition
+Game_ID	Unique numerical identifier for game t.
+Player_ID	Unique numerical identifier for player i.
+Position	"Player i's position on the field: ""Defence"", ""Midfield"", or ""Forward"")"
+GameTotalMins	The total number of minutes that player i spent on the field in game t. 
+GameTotalDistance_km	The total number of kilometers that player i ran in game t.
+Disposals	The total number of player i's disposals (kicks and handballs) in game t.
+Disposal_efficiency	"The percentage of player i's disposals in game t that were 'effective' (i.e, did not result in a turnover)."
+Goals	The total number of goals that player i kicked in game t.
+Tackles	The total number of tackles that player i completed in game t.
+Marks	The total number of marks that player i took in game t.
+Clearances	The total number of clearances that player i completed in game t.
+Margin	"The margin of game t. If Margin>0, player i's team won game t; if Margin<0, player i's team lost game t."
+Rainfall_mm	The quantity of rainfall (in mm) recorded during game t.
+Wind_mph	The average wind speed (in mph) recorded during game t.
