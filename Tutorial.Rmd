@@ -2,7 +2,7 @@
 title: "Getting to Know R: Exploring the AFL Data Set"
 author: "Patrick J. Ferguson"
 date: "12/12/2020"
-output: html_document
+output: rmarkdown::github_document
 ---
 
 ```{r setup, include = FALSE}
