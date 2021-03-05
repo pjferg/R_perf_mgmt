@@ -1311,7 +1311,7 @@ plot(density(AFL_data_set$GameTotalDistance_km), main='Total Distance Run',
      xlab='Km')
 ```
 
-![](Tutorial_files/figure-gfm/unnamed-chunk-15-1.png)<!-- -->
+![](Preparation_files/figure-gfm/unnamed-chunk-15-1.png)<!-- -->
 
 This plot is pretty informative (we see that a player runs around 13km
 in a typical game; some players run a bit more, some players run a lot
@@ -1330,7 +1330,7 @@ legend("topright", legend=c("Midfield", "Forward", "Defender"),
        col=c("red", "blue", "green"), lty=1, cex=0.8)
 ```
 
-![](Tutorial_files/figure-gfm/unnamed-chunk-16-1.png)<!-- -->
+![](Preparation_files/figure-gfm/unnamed-chunk-16-1.png)<!-- -->
 
 ### Explore relationships between variables
 
@@ -1365,7 +1365,7 @@ plot(grouped$total_goals, grouped$margin,
      xlab='Total Goals', ylab='Margin')
 ```
 
-![](Tutorial_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->
+![](Preparation_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->
 
 Although it is not terribly suprising, the plot above shows a strong
 positive relationship between the total number of goals a team scores
