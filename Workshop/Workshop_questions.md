@@ -1,11 +1,11 @@
 # Questions for live R workshop on performance measures
 
-1. How are the performance measures distributed? Start by using `stargazer()` and then plot the density of two variables, goals and disposals. For the latter, use **plot(density())**.
+1. How are the performance measures distributed? Start by using `stargazer()` and then plot the density of two variables, goals and disposals. For the latter, use `plot(density())`.
 	1. Is it good or bad for a measure to have high variance (think in terms of the trade-off between sensitivity and noise)?
 	2. How can thinking in terms of changes help us understand the properties of performance measures? What can we learn by looking at disposals in t-1 and disposals in t?
 
 
-2. In general, how do the individual measures correlate with team success (as measured by margin)? Start by aggregating the data set to the team-game level, then use **cor()**. Next, use scatter plots - **plot()** - to examine the relationships between margin and: 1) running distance; 2) disposals; 3), and tackles.
+2. In general, how do the individual measures correlate with team success (as measured by margin)? Start by aggregating the data set to the team-game level, then use `cor()`. Next, use scatter plots - `plot()` - to examine the relationships between margin and: 1) running distance; 2) disposals; 3), and tackles.
 	1. Focusing on the empirical relationship between tackles and margin, would it be a good idea to place a *negative* weight on tackles when evaluating players’ performance? Why/why not?
 	2. In general, do these associations tell us that certain measures (or the actions that drive these measures) *cause* teams to win? Why/why not?
 
@@ -21,7 +21,7 @@
  
 
 5. Do random shocks - like weather - introduce noise into the measures? Why might this be a bad thing? 
-	1. How does this noise show up in our measures? Let’s use **plot(density())** to look at how wet weather changes the distribution of two performance measures: disposal efficiency and tackles.
+	1. How does this noise show up in our measures? Let’s use `plot(density())` to look at how wet weather changes the distribution of two performance measures: disposal efficiency and tackles.
 	2. How can we filter out this noise? Think in terms of common shocks and what these mean for differences in performance across players within a given game (the idea of ‘abnormal’ performance is again useful).
 	3. Do we always want to filter out these shocks (or, do we want the players to expect that we will always filter out these shocks)?
 
