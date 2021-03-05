@@ -28,7 +28,14 @@ Click on **Workshop.md** to open and view the questions for the workshop. You sh
 
 ## Resources and Papers 
 
-This folder contains background/additional material on performance management and R.
+Rather than create a dedicated folder, I have listed the following helpful links and papers. I mentioned some of these resources in the lecture.
+
+- R for Data Science (Wickham & Grolemund): https://r4ds.had.co.nz/
+- Stackoverflow: https://stackoverflow.com/questions/tagged/r
+- Nick Huntington-Klein's fantastic R class on economics, causality, and analytics: http://www.nickchk.com/econ305.html
+- Grant McDermmott's incredibly-thorough R class on economics and data science: https://github.com/uo-ec607/lectures
+- Kerr (1975) is a classic, non-technical paper on performance measurement and compensation: https://stackoverflow.com/questions/tagged/r
+
 
 
 
