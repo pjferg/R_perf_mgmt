@@ -4,5 +4,13 @@
 	1. Is it good or bad for a measure to have high variance (think in terms of the trade-off between sensitivity and noise)?
 	2. How can thinking in terms of changes help us understand the properties of performance measures? What can we learn by looking at disposals in t-1 and disposals in t?
 
+
+2. In general, how do the individual measures correlate with team success (as measured by margin)? Start by aggregating the data set to the team-game level, then use **cor()**. Next, use scatter plots - **plot()** - to examine the relationships between margin and: 1) running distance; 2) disposals; 3), and tackles.
+	1. Focusing on the empirical relationship between tackles and margin, would it be a good idea to place a *negative* weight on tackles when evaluating players’ performance? Why/why not?
+	2. In general, do these associations tell us that certain measures (or the actions that drive these measures) *cause* teams to win? Why/why not?
+
+3. In economics, the standard production function, *y = f(x)*, tells us that increased input, *x*, lead to increased output, *y*. Should we adjust the measures in our data set for differences in inputs (or playing opportunities), and, if so, why/why not?
+	1. What is one way we could hold constant differences in inputs to evaluate a player’s productivity? Think about how we might be able to use one of the variables in our dataset to scale the other measures... 
+
  
 
