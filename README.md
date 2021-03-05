@@ -1,6 +1,6 @@
 # Applying Concepts From Performance Management: Using R to Work With Performance Data
 
-This repo contains the class materials, code, and data for the University of Melbourne module on performance management, data science, and R.
+This repo contains the class materials, code, and data for the University of Melbourne module on performance management, data science, and R. You will need to access the official course website on Canvas to access the class videos and Zoom links.
 
 The contents of each folder in the repo is fairly self-explanatory.
 
