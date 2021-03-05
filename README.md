@@ -33,7 +33,7 @@ Rather than create a dedicated folder, I have listed the following helpful links
 - R for Data Science (Wickham & Grolemund): https://r4ds.had.co.nz/
 - Stackoverflow: https://stackoverflow.com/questions/tagged/r
 - Nick Huntington-Klein's fantastic R class on economics, causality, and analytics: http://www.nickchk.com/econ305.html
-- Grant McDermmott's incredibly-thorough R class on economics and data science: https://github.com/uo-ec607/lectures
+- Grant McDermott's incredibly-thorough R class on economics and data science: https://github.com/uo-ec607/lectures
 - Kerr (1975) is a classic, non-technical paper on performance measurement and compensation: https://stackoverflow.com/questions/tagged/r
 
 
