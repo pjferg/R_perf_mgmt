@@ -34,7 +34,7 @@ Rather than create a dedicated folder, I have listed the following helpful links
 - Stackoverflow: https://stackoverflow.com/questions/tagged/r
 - Nick Huntington-Klein's fantastic R class on economics, causality, and analytics: http://www.nickchk.com/econ305.html
 - Grant McDermott's incredibly-thorough R class on economics and data science: https://github.com/uo-ec607/lectures
-- Kerr (1975) is a classic, non-technical paper on performance measurement and compensation: https://stackoverflow.com/questions/tagged/r
+- Kerr (1975) is a classic, non-technical paper on performance measurement and compensation: http://web.mit.edu/curhan/www/docs/Articles/15341_Readings/Motivation/Kerr_Folly_of_rewarding_A_while_hoping_for_B.pdf
 - Holmstrom won a Nobel Prize for thinking about and solving many of the problems you've covered in this course: https://www.nobelprize.org/prizes/economic-sciences/2016/holmstrom/lecture/
 
 
