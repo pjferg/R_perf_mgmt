@@ -179,7 +179,7 @@ You should seem them as the final two columns in the data set.
 
 When you have large data sets, you will often only want to look at a subset or snapshot of your data. In the case of wide data sets (i.e., many columns), you may want to only look at or work with a subset of variables. In the case of long data sets (i.e., many rows), you may want to only look at or work with a subset of observations.
 
-You can use the function `select()` to 'narrow' a wide data set (i.e., drop variables). For example, let's say we want to create a tibble that contains the following four variables from our AFL data set: Player_ID, Game_ID, and the two new variables we just created (Meters_per_min, and best_on_ground). You can run the following code to create this 'narrow' data set:
+You can use the function `select()` to 'narrow' a wide data set (i.e., drop variables). For example, let's say we want to create a tibble that contains the following four variables from our AFL data set: `Player_ID`, `Game_ID`, and the two new variables we just created  - `Meters_per_min` and `best_on_ground`. You can run the following code to create this 'narrow' data set:
 
 ```{r }
 
@@ -196,7 +196,7 @@ knitr::kable(narrow[1:10,])
 
 ```
 
-If you want to 'shorten' a long data set (i.e, drop observations), you can use the filter( ) command. For example, the following piece of code creates a tibble that only contains observations from our AFL data set for which best_on_ground=1 (i.e., observations where the player scored 2+ goals in the game and ran more than 14 km):
+If you want to 'shorten' a long data set (i.e, drop observations), you can use the `filter()` command. For example, the following piece of code creates a tibble that only contains observations from our AFL data set for which `best_on_ground=1` (i.e., observations where the player scored 2+ goals in the game and ran more than 14 km):
 
 ```{r }
 

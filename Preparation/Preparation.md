@@ -103,8 +103,8 @@ code:
 
 As shown in the screenshot above, to run a chunk of code in the editor,
 simply select the line/s of code you want to run and then click on the
-‘Run’ icon in the source editor pane (alternatively, if you are on a
-Mac, you can highlight the code and hit Ctrl+Enter). You will see the
+`Run` icon in the source editor pane (alternatively, if you are on a
+Mac, you can highlight the code and hit `Ctrl+Enter`). You will see the
 same line of code show up in the console pane below the source editor
 (if it is accompanied by an error message, something has gone wrong and
 your working directory will not be set to the desktop).
@@ -113,10 +113,10 @@ Having set your working directory, you now want to store the raw data
 file we will be working with on the desktop.
 
 First, you need to download the AFL data set from the course website on
-Canvas. The data set can also be accessed from the ‘Preparation’ folder
-on the Github page for this module (click on ‘AFL\_data\_set.csv’ then
-click ‘Raw’; copy and paste the contents to a plain text file and save
-as ‘AFL\_data\_set.csv’ on your desktop).
+Canvas. The data set can also be accessed from the `Preparation` folder
+on the Github page for this module (click on `AFL_data_set.csv` then
+click `Raw`; copy and paste the contents to a plain text file and save
+as `AFL_data_set.csv` on your desktop).
 
 Next, you need to move this file to the desktop on your computer. Once
 you have done this, the data set should show up as a csv file in the
@@ -132,7 +132,7 @@ As I mentioned in my lecture, you will primarily be working with the
 ‘tidyverse’ set of packages. As such, you will need to install and
 load the tidyverse package. Installing packages in R is straight-forward
 and follows the same basic convention: specify the name of the package
-you want to install in the **install.packages()** function.
+you want to install in the `install.packages()` function.
 
 To install the tidyverse package, you will need to type the following
 line of code in your script and hit run (just like I showed you above
@@ -171,17 +171,17 @@ AFL_data_set <- read_csv("AFL_data_set.csv")
 ```
 
 Most of the code you will write in R follows this same basic structure:
-you are using a function - **read\_csv()** - to transform an input (our
-raw data from the csv file) - into an R object - the ‘tibble’ (i.e., the
-tidy-version of a data frame), ‘AFL\_data\_set’.
+you are using a function - `read_csv()` - to transform an input (our raw
+data from the csv file) - into an R object - the ‘tibble’ (i.e., the
+tidy-version of a data frame), `AFL_data_set`.
 
-If all goes as planned, you should see ‘AFL\_data\_set’ show up in the
+If all goes as planned, you should see `AFL_data_set` show up in the
 environment pane:
 
 ![](Images/enviro_pane.png)
 
-If you click on ‘AFL\_data\_set’, a spreadsheet-style viewer will
-display the data in the source editor:
+If you click on `AFL_data_set`, a spreadsheet-style viewer will display
+the data in the source editor:
 
 ![](Images/viewer.png)
 
@@ -220,7 +220,7 @@ AFL_data_set
 You should see some output (a crude table) pop up in your console. What
 can we learn from this output?
 
-  - The top row tells us that the object ‘AFL\_data\_set’ is a tibble of
+  - The top row tells us that the object `AFL_data_set` is a tibble of
     dimensions 1474x14. That is, our data set contains 1474 rows (or
     observations) and 14 variables (or measures).
       - As I explained in class, each row is a player-game observation
@@ -231,7 +231,7 @@ can we learn from this output?
       - This is a limit of viewing a data set in this fashion: if the
         data set is ‘too wide’, you only see the first few variables.
   - The third row down tells us the ‘types’ of variables in our data
-    set. You can think of ‘dbl’ as a number, and you can think of ‘chr’
+    set. You can think of `dbl` as a number, and you can think of `chr`
     as words.
   - From the fourth row down, you can see the actual data (or
     observations) in our data set.
@@ -271,7 +271,7 @@ I will interpret the first row reported above.
 ### Creating variables
 
 Now that you have a handle on our data set, I am going to get you to
-create some new variables. You will use the function **mutate()** to
+create some new variables. You will use the function `mutate()` to
 create these variables. I will also get you to use pipes (%\>%) to
 string together pieces of code. You should get in the habit of using
 pipes. They can help you to compartmentalize blocks of complex code.
@@ -290,7 +290,7 @@ AFL_data_set <- AFL_data_set %>%
 
 Second, I will get you to create a variable that indicates (i.e., takes
 a value of one) if a player kicked 2+ goals in a game and also ran 14+
-km. To generate this variable - which we will call ‘best\_on\_ground’ -
+km. To generate this variable - which we will call `best_on_ground` -
 you need to run the following chunk of code:
 
 ``` r
@@ -329,12 +329,12 @@ many columns), you may want to only look at or work with a subset of
 variables. In the case of long data sets (i.e., many rows), you may want
 to only look at or work with a subset of observations.
 
-You can use the function **select()** to ‘narrow’ a wide data set (i.e.,
+You can use the function `select()` to ‘narrow’ a wide data set (i.e.,
 drop variables). For example, let’s say we want to create a tibble that
-contains the following four variables from our AFL data set: Player\_ID,
-Game\_ID, and the two new variables we just created (Meters\_per\_min,
-and best\_on\_ground). You can run the following code to create this
-‘narrow’ data set:
+contains the following four variables from our AFL data set:
+`Player_ID`, `Game_ID`, and the two new variables we just created -
+`Meters_per_min` and `best_on_ground`. You can run the following code to
+create this ‘narrow’ data set:
 
 ``` r
 narrow <- AFL_data_set %>%
@@ -363,9 +363,9 @@ knitr::kable(narrow[1:10,])
 |         22 |        1 |         131.1242 |                0 |
 
 If you want to ‘shorten’ a long data set (i.e, drop observations), you
-can use the filter( ) command. For example, the following piece of code
+can use the `filter()` command. For example, the following piece of code
 creates a tibble that only contains observations from our AFL data set
-for which best\_on\_ground=1 (i.e., observations where the player scored
+for which `best_on_ground=1` (i.e., observations where the player scored
 2+ goals in the game and ran more than 14 km):
 
 ``` r
@@ -375,7 +375,7 @@ short <- AFL_data_set %>%
 
 You should then be able to see that this new tibble only contains
 observations from the AFL data set for which
-best\_on\_ground=1:
+`best_on_ground=1`:
 
 ``` r
 knitr::kable(short[1:10,])
@@ -406,7 +406,7 @@ its distribution. I will show you two common, easy-to-interpret ways to
 do this.
 
 You can calculate the summary statistics of a variable. I will get you
-to use the **summary()** function to do this for the variable
+to use the `summary()` function to do this for the variable
 GameTotalDistance\_km:
 
 ``` r
@@ -416,9 +416,9 @@ summary(AFL_data_set$GameTotalDistance_km)
     ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
     ##  0.1829 12.2714 13.1155 12.9939 14.0226 17.0754
 
-A downside of the **summary()** function is that it lacks many of the
+A downside of the `summary()` function is that it lacks many of the
 statistics we commonly use in economics and data science (e.g, standard
-deviation, etc). An alternative approach is to use the **stargazer()**
+deviation, etc). An alternative approach is to use the `stargazer()`
 function from the stargazer package (to use this approach you will need
 to install and load the stargazer package - to do so, just following the
 procedure I describe above for installing packages).
@@ -1301,7 +1301,7 @@ like a smoothed version of a histogram; it tells you how often each
 value of your variable of interest shows up in your data set.
 
 If you run the following chunk of code, you will get a density plot for
-the variable GameTotalDistance\_km. This plot captures the full
+the variable `GameTotalDistance_km`. This plot captures the full
 distribution, rather than just a subet of the distribution’s ‘moments’
 (.e.g, mean, variance,
 etc.):
@@ -1354,7 +1354,7 @@ mechanically related, we expect a strong positive relationship to show
 up in our plot. To produce a scatter plot of these variables, you can
 run the following code (N.B. that before you plot the raw variables, you
 need to aggreate the player-level data to the team-level, hence the use
-of the **group\_by()** function in the code):
+of the `group_by()` function in the code):
 
 ``` r
 grouped <- AFL_data_set %>%
@@ -1390,7 +1390,7 @@ espcially powerful if we suspect that a confounding variable is creating
 (or masking) a relationship between the two variables of interest.
 
 In the follow examples, we will regress margin on total goals by using
-the **lm()** function. The first model you will run assumes a simple
+the `lm()` function. The first model you will run assumes a simple
 linear relationship between margin and goals; the second model you will
 run allows for the weather conditions at the ground to affect both the
 number of goals a team scores and the margin of the game.
