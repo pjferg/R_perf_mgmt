@@ -1,4 +1,4 @@
-# R_perf_mgmt
+# Applying Concepts From Performance Management: Using R to Work With Performance Data
 
 This repo contains the class materials, code, and data for the University of Melbourne module on performance management, data science, and R.
 
