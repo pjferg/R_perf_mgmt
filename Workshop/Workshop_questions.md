@@ -10,7 +10,13 @@
 	2. In general, do these associations tell us that certain measures (or the actions that drive these measures) *cause* teams to win? Why/why not?
 
 3. In economics, the standard production function, *y = f(x)*, tells us that increased input, *x*, lead to increased output, *y*. Should we adjust the measures in our data set for differences in inputs (or playing opportunities), and, if so, why/why not?
-	1. What is one way we could hold constant differences in inputs to evaluate a player’s productivity? Think about how we might be able to use one of the variables in our dataset to scale the other measures... 
+	1. What is one way we could hold constant differences in inputs to evaluate a player’s productivity? Think about how we might be able to use one of the variables in our dataset to scale the other measures...
+
+4. In practice, workers’ production functions are rarely independent. That is, one worker’s output often serves as an input into another worker’s production function: *y2=f(x2,y1)* where *y1=f(x1,y2)*. Do we expect interdependencies in performance in our setting? 
+	1. To test this, let’s explore how performance measures are correlated across playing positions. How might forwards’ performance depend on midfielders’ output? How can we show this in the data? 
+	2. How do these interdependencies complicate the process of evaluating the performance of an individual player?
+	3. How might we be able to filter out these interdependencies? Think about an empirical model that allows us to identify *abnormal* performance (i.e., performance above or below what we would expect given teammates’ outputs)...
+ 
 
  
 

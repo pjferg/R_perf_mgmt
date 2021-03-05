@@ -16,9 +16,11 @@ Click on **Preparation.md** to open and view the preparation material for the da
 
 **AFL_data_set.csv** contains the data set for the data task. **Data dictionary.csv** is the code book for the data set you will use for the data task.
 
+You need to complete this preparation task before the workshop.
+
 ## Workshop
 
-This folder contains everything you will need to follow along and participate in the class's work shop.
+This folder contains everything you will need to follow along and participate in the class's workshop. For the live workshop sessions, we will use the same data set as you used for the preparation task. More generally, I will assume you have completed the completed the preparation task before the workshop. 
 
 Click on **Workshop.md** to open and view the questions for the workshop. You should look at these before the workshop. I do not expect you to come to the session with fully formed answers (and code), but I expect you to have thought about the questions and how you might answer them.
 
