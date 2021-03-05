@@ -10,7 +10,7 @@
 	2. In general, do these associations tell us that certain measures (or the actions that drive these measures) *cause* teams to win? Why/why not?
 
 
-3. In economics, the standard production function, $y = f(x)$, tells us that increased input, $x$, leads to increased output, $y$. Should we adjust the measures in our data set for differences in inputs (or playing opportunities), and, if so, why/why not?
+3. In economics, the standard production function, $$y = f(x)$$, tells us that increased input, $x$, leads to increased output, $y$. Should we adjust the measures in our data set for differences in inputs (or playing opportunities), and, if so, why/why not?
 	1. What is one way we could hold constant differences in inputs to evaluate a player’s productivity? Think about how we might be able to use one of the variables in our dataset to scale the other measures...
 
 
