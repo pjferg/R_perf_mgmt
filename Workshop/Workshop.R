@@ -29,7 +29,7 @@ time_series_disposals <- AFL_data_set %>%
   summarize(avg_Disposals=mean(Disposals))
 
 plot(time_series_disposals$Disposals_lag, time_series_disposals$avg_Disposals,
-     xlab='Disposals @ t-1', ylab='Avg. Disposals @ t')
+     xlab='Disposals at t-1', ylab='Avg. Disposals at t')
 
 # Question 2 - How are the performance measures related to team success?
 
@@ -46,7 +46,7 @@ grouped <- AFL_data_set %>%
 
 cor_matrix <- cor(grouped)
 
-cor_margin <- round(cor_mat[,10],2)
+cor_margin <- round(cor_matrix[,10],2)
 
 plot(grouped$avg_GameTotalDistance_km, grouped$Margin,
      xlab='Avg. Running Distance', ylab='Margin')
