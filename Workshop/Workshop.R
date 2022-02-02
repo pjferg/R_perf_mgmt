@@ -2,9 +2,8 @@
 # Set up session
 library(tidyverse)
 library(stargazer)
-setwd("/Users/pferguson/Desktop")
+setwd("/Users/pfer/Desktop")
 
-# Read in data set
 AFL_data_set <- read_csv("AFL_data_set.csv")
 
 # Question 1 - What are the statistical properties of the performance measures?
