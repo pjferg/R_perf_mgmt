@@ -1,7 +1,7 @@
 ---
 title: "Getting to Know R: Exploring the AFL Data Set"
 author: "Patrick J. Ferguson"
-date: "May 2021"
+date: "April 2022"
 output: rmarkdown::github_document
 ---
 
@@ -32,7 +32,7 @@ To install RStudio, go to https://rstudio.com/products/rstudio/download/ Follow 
 
 With both programs installed, you should now open RStudio. On first glance, you will have a lot to take in. However, RStudio is less complex than it initially looks. The interface consists of four main panels: the source editor, the console, the environment pane and the browser pane.
 
-For most applications, you will work with RStudio in the following manner. You will write and run your code from a script in the source editor. Output from your code is repoted in the console. If you created an object with your code (e.g., data frame/tibble, function, etc), you can interact with this object in the environment pane. For instance, you can open and inspect your data from here. Finally, you can view your files/directory and plots in the browser pane.
+For most applications, you will work with RStudio in the following manner. You will write and run your code from a script in the source editor. Output from your code is reported in the console. If you created an object with your code (e.g., data frame/tibble, function, etc), you can interact with this object in the environment pane. For instance, you can open and inspect your data from here. Finally, you can view your files/directory and plots in the browser pane.
 
 The following video provides a useful overview of the RStudio interface (as well as information on how to install R and RStudio - this is helpful if you ran into trouble on the previous step):
 
@@ -66,7 +66,7 @@ As shown in the screenshot above, to run a chunk of code in the editor, simply s
 
 Having set your working directory, you now want to store the raw data file we will be working with on the desktop.
 
-First, you need to download the AFL data set from the course website on Canvas. The data set can also be accessed from the `Preparation` folder on the Github page for this module (click on `AFL_data_set.csv` then click `Raw`; copy and paste the contents to a plain text file and save as `AFL_data_set.csv` on your desktop).
+First, you need to download the AFL data set from the course website on the LMS. The data set can also be accessed from the `Preparation` folder on the Github page for this module (click on `AFL_data_set.csv` then click `Raw`; copy and paste the contents to a plain text file and save as `AFL_data_set.csv` on your desktop).
 
 Next, you need to move this file to the desktop on your computer. Once you have done this, the data set should show up as a csv file in the browser pane of your RStudio interface.
 
@@ -90,7 +90,7 @@ Once you have run this line of code, you should see some output show up in the c
 library(tidyverse)
 ```
 
-Great. You are now ready to get your hands dirty. One final thing I will mention is that you do not need to install a package every time you want to use it. Once a packaged has been installed, it remains on your local machine (unless you choose to remove it). However, you do need to load installed packages each time your start a new session in R. A good habit to get into is to start each of your scripts with a chunk of code that loads all the packages that you commonly use.
+Great. You are now ready to get your hands dirty. One final thing I will mention is that you do not need to install a package every time you want to use it. Once a packaged has been installed, it remains on your local machine (unless you choose to remove it). However, you do need to load installed packages each time you start a new session in R. A good habit to get into is to start each of your scripts with a chunk of code that loads all the packages that you commonly use.
 
 ### Load data set
 
@@ -126,7 +126,7 @@ You should see some output (a crude table) pop up in your console. What can we l
 
 * The top row tells us that the object `AFL_data_set` is a tibble of dimensions 1474x14. That is, our data set contains 1474 rows (or observations) and 14 variables (or measures).
   + As I explained in class, each row is a player-game observation (i.e., a player's performance measures for an individual game).
-* The second row down gives us the names of the first eight variables in our data set. The notes at the bottom of the table tell us that there are '6 more variables' not reported in the output.
+* The second row down gives us the names of the first six variables in our data set. The notes at the bottom of the table tell us that there are '8 more variables' not reported in the output.
   + This is a limit of viewing a data set in this fashion: if the data set is 'too wide', you only see the first few variables.
 * The third row down tells us the 'types' of variables in our data set. You can think of `dbl` as a number, and you can think of `chr` as words.
 * From the fourth row down, you can see the actual data (or observations) in our data set.
@@ -266,7 +266,7 @@ legend("topright", legend=c("Midfield", "Forward", "Defender"),
 
 Most of the time when we work with data, we aren't just interested in looking at variables by themselves. Instead, we most often want to know how variables can be related to each other. How are variables correlated? How can one variable be used to predict another? How does one variable cause another? To answer these sorts of questions, we need to understand how variables are related (we also need to impose a set of assumptions on the underlying data generating process if we want to make causal claims). While we won't cover the later in detail in this module (this is a hugely important topic, but one for another class...), we will teach you how to do the former - i.e., understand whether one variable is associated with another variable.
 
-Fist, you can use plots and other visuals to understand whether variables are associated with one another. For example, let's look at the relationship between the total number of goals kicked by a team and the final margin of the game. As these variables are by definition mechanically related, we expect a strong positive relationship to show up in our plot. To produce a scatter plot of these variables, you can run the following code (N.B. that before you plot the raw variables, you need to aggreate the player-level data to the team-level, hence the use of the `group_by()` function in the code):
+First, you can use plots and other visuals to understand whether variables are associated with one another. For example, let's look at the relationship between the total number of goals kicked by a team and the final margin of the game. As these variables are by definition mechanically related, we expect a strong positive relationship to show up in our plot. To produce a scatter plot of these variables, you can run the following code (N.B. that before you plot the raw variables, you need to aggreate the player-level data to the team-level, hence the use of the `group_by()` function in the code):
 
 ```{r }
 
@@ -288,7 +288,7 @@ cor(grouped$total_goals, grouped$margin)
 
 ```
 
-Third, we can also use a regression to quantify the association between two variables. A neat feature of regression is that it also allows us to include additional variables ('controls') in the model. This can be espcially powerful if we suspect that a confounding variable is creating (or masking) a relationship between the two variables of interest.
+Third, we can also use a regression to quantify the association between two variables. A neat feature of regression is that it also allows us to include additional variables ('controls') in the model. This can be especially powerful if we suspect that a confounding variable is creating (or masking) a relationship between the two variables of interest.
 
 In the follow examples, we will regress margin on total goals by using the `lm()` function. The first model you will run assumes a simple linear relationship between margin and goals; the second model you will run allows for the weather conditions at the ground to affect both the number of goals a team scores and the margin of the game.
 

@@ -129,10 +129,10 @@ You want to see something that looks like the following:
 ### Install and load packages
 
 As I mentioned in my lecture, you will primarily be working with the
-‘tidyverse’ set of packages. As such, you will need to install and
-load the tidyverse package. Installing packages in R is straight-forward
-and follows the same basic convention: specify the name of the package
-you want to install in the `install.packages()` function.
+‘tidyverse’ set of packages. As such, you will need to install and load
+the tidyverse package. Installing packages in R is straight-forward and
+follows the same basic convention: specify the name of the package you
+want to install in the `install.packages()` function.
 
 To install the tidyverse package, you will need to type the following
 line of code in your script and hit run (just like I showed you above
@@ -201,39 +201,39 @@ AFL_data_set
 ```
 
     ## # A tibble: 1,474 x 14
-    ##    Game_ID Player_ID Position GameTotalMins GameTotalDistan… Disposals
-    ##      <dbl>     <dbl> <chr>            <dbl>            <dbl>     <dbl>
-    ##  1       1         2 DEFENCE          108.              13.3        17
-    ##  2       1         5 DEFENCE          115.              14.2        21
-    ##  3       1         6 MIDFIELD          90.1             12.3        12
-    ##  4       1         7 DEFENCE          110.              13.2        19
-    ##  5       1         8 FORWARD          109.              15.2        14
-    ##  6       1        13 DEFENCE          116.              13.3        15
-    ##  7       1        14 MIDFIELD         108.              14.3        17
-    ##  8       1        16 MIDFIELD          95.8             11.9        21
-    ##  9       1        21 DEFENCE          108.              13.8        11
-    ## 10       1        22 MIDFIELD          91.8             12.0        14
+    ##    Game_ID Player_ID Position GameTotalMins GameTotalDistance_km Disposals
+    ##      <dbl>     <dbl> <chr>            <dbl>                <dbl>     <dbl>
+    ##  1       1         2 DEFENCE          108.                  13.3        17
+    ##  2       1         5 DEFENCE          115.                  14.2        21
+    ##  3       1         6 MIDFIELD          90.1                 12.3        12
+    ##  4       1         7 DEFENCE          110.                  13.2        19
+    ##  5       1         8 FORWARD          109.                  15.2        14
+    ##  6       1        13 DEFENCE          116.                  13.3        15
+    ##  7       1        14 MIDFIELD         108.                  14.3        17
+    ##  8       1        16 MIDFIELD          95.8                 11.9        21
+    ##  9       1        21 DEFENCE          108.                  13.8        11
+    ## 10       1        22 MIDFIELD          91.8                 12.0        14
     ## # … with 1,464 more rows, and 8 more variables: Disposal_efficiency <dbl>,
-    ## #   Goals <dbl>, Tackles <dbl>, Marks <dbl>, Clearances <dbl>,
-    ## #   Margin <dbl>, Rainfall_mm <dbl>, Wind_mph <dbl>
+    ## #   Goals <dbl>, Tackles <dbl>, Marks <dbl>, Clearances <dbl>, Margin <dbl>,
+    ## #   Rainfall_mm <dbl>, Wind_mph <dbl>
 
 You should see some output (a crude table) pop up in your console. What
 can we learn from this output?
 
-  - The top row tells us that the object `AFL_data_set` is a tibble of
+-   The top row tells us that the object `AFL_data_set` is a tibble of
     dimensions 1474x14. That is, our data set contains 1474 rows (or
     observations) and 14 variables (or measures).
-      - As I explained in class, each row is a player-game observation
+    -   As I explained in class, each row is a player-game observation
         (i.e., a player’s performance measures for an individual game).
-  - The second row down gives us the names of the first six variables
-    in our data set. The notes at the bottom of the table tell us that
+-   The second row down gives us the names of the first six variables in
+    our data set. The notes at the bottom of the table tell us that
     there are ‘8 more variables’ not reported in the output.
-      - This is a limit of viewing a data set in this fashion: if the
+    -   This is a limit of viewing a data set in this fashion: if the
         data set is ‘too wide’, you only see the first few variables.
-  - The third row down tells us the ‘types’ of variables in our data
+-   The third row down tells us the ‘types’ of variables in our data
     set. You can think of `dbl` as a number, and you can think of `chr`
     as words.
-  - From the fourth row down, you can see the actual data (or
+-   From the fourth row down, you can see the actual data (or
     observations) in our data set.
 
 While this output provides a useful overview of our data set, another
@@ -246,7 +246,7 @@ knitr::kable(AFL_data_set[1:10,])
 ```
 
 | Game\_ID | Player\_ID | Position | GameTotalMins | GameTotalDistance\_km | Disposals | Disposal\_efficiency | Goals | Tackles | Marks | Clearances | Margin | Rainfall\_mm | Wind\_mph |
-| -------: | ---------: | :------- | ------------: | --------------------: | --------: | -------------------: | ----: | ------: | ----: | ---------: | -----: | -----------: | --------: |
+|---------:|-----------:|:---------|--------------:|----------------------:|----------:|---------------------:|------:|--------:|------:|-----------:|-------:|-------------:|----------:|
 |        1 |          2 | DEFENCE  |         108.5 |               13.2552 |        17 |                 58.8 |     0 |       4 |     4 |          2 |     30 |          1.2 |        16 |
 |        1 |          5 | DEFENCE  |         115.4 |               14.2282 |        21 |                 66.7 |     0 |       6 |     4 |          0 |     30 |          1.2 |        16 |
 |        1 |          6 | MIDFIELD |          90.1 |               12.2865 |        12 |                 66.7 |     0 |       5 |     3 |          2 |     30 |          1.2 |        16 |
@@ -261,7 +261,7 @@ knitr::kable(AFL_data_set[1:10,])
 To get a better sense of how to interpret the contents of our data set,
 I will interpret the first row reported above.
 
-  - In Game\_ID=1, Player\_ID=2, a defender, played 108.5 minutes of
+-   In Game\_ID=1, Player\_ID=2, a defender, played 108.5 minutes of
     game time during which he ran 13.3 km. He accumulated a total of 17
     disposals, at an efficiency rate of 58.8%. He kicked 0 goals,
     completed 4 tackles, took 5 marks, and completed 2 clearances. His
@@ -272,7 +272,7 @@ I will interpret the first row reported above.
 
 Now that you have a handle on our data set, I am going to get you to
 create some new variables. You will use the function `mutate()` to
-create these variables. I will also get you to use pipes (%\>%) to
+create these variables. I will also get you to use pipes (%&gt;%) to
 string together pieces of code. You should get in the habit of using
 pipes. They can help you to compartmentalize blocks of complex code.
 Pipes also make your code easier to read - something you will appreciate
@@ -299,15 +299,14 @@ AFL_data_set <- AFL_data_set %>%
 ```
 
 To confirm that your code ran as intended, you should take another quick
-look at your data set to confirm that the new variables now show
-up:
+look at your data set to confirm that the new variables now show up:
 
 ``` r
 knitr::kable(AFL_data_set[1:10,])
 ```
 
 | Game\_ID | Player\_ID | Position | GameTotalMins | GameTotalDistance\_km | Disposals | Disposal\_efficiency | Goals | Tackles | Marks | Clearances | Margin | Rainfall\_mm | Wind\_mph | Meters\_per\_min | best\_on\_ground |
-| -------: | ---------: | :------- | ------------: | --------------------: | --------: | -------------------: | ----: | ------: | ----: | ---------: | -----: | -----------: | --------: | ---------------: | ---------------: |
+|---------:|-----------:|:---------|--------------:|----------------------:|----------:|---------------------:|------:|--------:|------:|-----------:|-------:|-------------:|----------:|-----------------:|-----------------:|
 |        1 |          2 | DEFENCE  |         108.5 |               13.2552 |        17 |                 58.8 |     0 |       4 |     4 |          2 |     30 |          1.2 |        16 |         122.1677 |                0 |
 |        1 |          5 | DEFENCE  |         115.4 |               14.2282 |        21 |                 66.7 |     0 |       6 |     4 |          0 |     30 |          1.2 |        16 |         123.2946 |                0 |
 |        1 |          6 | MIDFIELD |          90.1 |               12.2865 |        12 |                 66.7 |     0 |       5 |     3 |          2 |     30 |          1.2 |        16 |         136.3651 |                0 |
@@ -350,7 +349,7 @@ knitr::kable(narrow[1:10,])
 ```
 
 | Player\_ID | Game\_ID | Meters\_per\_min | best\_on\_ground |
-| ---------: | -------: | ---------------: | ---------------: |
+|-----------:|---------:|-----------------:|-----------------:|
 |          2 |        1 |         122.1677 |                0 |
 |          5 |        1 |         123.2946 |                0 |
 |          6 |        1 |         136.3651 |                0 |
@@ -374,17 +373,16 @@ short <- AFL_data_set %>%
 ```
 
 You should then be able to see that this new tibble only contains
-observations from the AFL data set for which
-`best_on_ground=1`:
+observations from the AFL data set for which `best_on_ground=1`:
 
 ``` r
 knitr::kable(short[1:10,])
 ```
 
 | Game\_ID | Player\_ID | Position | GameTotalMins | GameTotalDistance\_km | Disposals | Disposal\_efficiency | Goals | Tackles | Marks | Clearances | Margin | Rainfall\_mm | Wind\_mph | Meters\_per\_min | best\_on\_ground |
-| -------: | ---------: | :------- | ------------: | --------------------: | --------: | -------------------: | ----: | ------: | ----: | ---------: | -----: | -----------: | --------: | ---------------: | ---------------: |
+|---------:|-----------:|:---------|--------------:|----------------------:|----------:|---------------------:|------:|--------:|------:|-----------:|-------:|-------------:|----------:|-----------------:|-----------------:|
 |        1 |          8 | FORWARD  |         109.3 |               15.2498 |        14 |                 78.6 |     3 |       4 |     2 |          3 |     30 |          1.2 |        16 |         139.5224 |                1 |
-|        2 |         29 | MIDFIELD |          99.4 |               14.4787 |        17 |                 82.4 |     2 |       7 |     3 |          3 |   \-13 |          0.0 |        12 |         145.6610 |                1 |
+|        2 |         29 | MIDFIELD |          99.4 |               14.4787 |        17 |                 82.4 |     2 |       7 |     3 |          3 |    -13 |          0.0 |        12 |         145.6610 |                1 |
 |        3 |         28 | FORWARD  |         101.6 |               14.2604 |        13 |                 92.3 |     2 |       4 |     3 |          1 |     69 |          0.0 |         9 |         140.3583 |                1 |
 |        3 |         42 | MIDFIELD |         104.2 |               14.3412 |        28 |                 71.4 |     2 |       2 |     5 |          5 |     69 |          0.0 |         9 |         137.6315 |                1 |
 |        5 |          9 | FORWARD  |         108.1 |               14.8046 |        18 |                 72.2 |     3 |       4 |     3 |          1 |     48 |          0.0 |         4 |         136.9528 |                1 |
@@ -433,863 +431,434 @@ stargazer(data.frame(AFL_data_set), type = "html")
 ```
 
 <table style="text-align:center">
-
 <tr>
-
 <td colspan="8" style="border-bottom: 1px solid black">
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:left">
-
 Statistic
-
 </td>
-
 <td>
-
 N
-
 </td>
-
 <td>
-
 Mean
-
 </td>
-
 <td>
-
 St. Dev.
-
 </td>
-
 <td>
-
 Min
-
 </td>
-
 <td>
-
 Pctl(25)
-
 </td>
-
 <td>
-
 Pctl(75)
-
 </td>
-
 <td>
-
 Max
-
 </td>
-
 </tr>
-
 <tr>
-
 <td colspan="8" style="border-bottom: 1px solid black">
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:left">
-
 Game\_ID
-
 </td>
-
 <td>
-
 1,474
-
 </td>
-
 <td>
-
 35.307
-
 </td>
-
 <td>
-
 20.521
-
 </td>
-
 <td>
-
 1
-
 </td>
-
 <td>
-
 17
-
 </td>
-
 <td>
-
 54
-
 </td>
-
 <td>
-
 70
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:left">
-
 Player\_ID
-
 </td>
-
 <td>
-
 1,474
-
 </td>
-
 <td>
-
 27.988
-
 </td>
-
 <td>
-
 15.152
-
 </td>
-
 <td>
-
 1
-
 </td>
-
 <td>
-
 15
-
 </td>
-
 <td>
-
 42
-
 </td>
-
 <td>
-
 53
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:left">
-
 GameTotalMins
-
 </td>
-
 <td>
-
 1,474
-
 </td>
-
 <td>
-
 99.827
-
 </td>
-
 <td>
-
 13.892
-
 </td>
-
 <td>
-
 1.320
-
 </td>
-
 <td>
-
 93.422
-
 </td>
-
 <td>
-
 108.295
-
 </td>
-
 <td>
-
 129.520
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:left">
-
 GameTotalDistance\_km
-
 </td>
-
 <td>
-
 1,474
-
 </td>
-
 <td>
-
 12.994
-
 </td>
-
 <td>
-
 1.703
-
 </td>
-
 <td>
-
 0.183
-
 </td>
-
 <td>
-
 12.271
-
 </td>
-
 <td>
-
 14.023
-
 </td>
-
 <td>
-
 17.075
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:left">
-
 Disposals
-
 </td>
-
 <td>
-
 1,474
-
 </td>
-
 <td>
-
 17.389
-
 </td>
-
 <td>
-
 7.364
-
 </td>
-
 <td>
-
 0
-
 </td>
-
 <td>
-
 12
-
 </td>
-
 <td>
-
 22
-
 </td>
-
 <td>
-
 48
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:left">
-
 Disposal\_efficiency
-
 </td>
-
 <td>
-
 1,474
-
 </td>
-
 <td>
-
 73.396
-
 </td>
-
 <td>
-
 13.012
-
 </td>
-
 <td>
-
 0.000
-
 </td>
-
 <td>
-
 65.875
-
 </td>
-
 <td>
-
 82.325
-
 </td>
-
 <td>
-
 100.000
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:left">
-
 Goals
-
 </td>
-
 <td>
-
 1,474
-
 </td>
-
 <td>
-
 0.624
-
 </td>
-
 <td>
-
 1.023
-
 </td>
-
 <td>
-
 0
-
 </td>
-
 <td>
-
 0
-
 </td>
-
 <td>
-
 1
-
 </td>
-
 <td>
-
 7
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:left">
-
 Tackles
-
 </td>
-
 <td>
-
 1,474
-
 </td>
-
 <td>
-
 3.212
-
 </td>
-
 <td>
-
 2.424
-
 </td>
-
 <td>
-
 0
-
 </td>
-
 <td>
-
 1
-
 </td>
-
 <td>
-
 4
-
 </td>
-
 <td>
-
 18
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:left">
-
 Marks
-
 </td>
-
 <td>
-
 1,474
-
 </td>
-
 <td>
-
 4.102
-
 </td>
-
 <td>
-
 2.464
-
 </td>
-
 <td>
-
 0
-
 </td>
-
 <td>
-
 2
-
 </td>
-
 <td>
-
 6
-
 </td>
-
 <td>
-
 14
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:left">
-
 Clearances
-
 </td>
-
 <td>
-
 1,474
-
 </td>
-
 <td>
-
 1.716
-
 </td>
-
 <td>
-
 2.293
-
 </td>
-
 <td>
-
 0
-
 </td>
-
 <td>
-
 0
-
 </td>
-
 <td>
-
 2
-
 </td>
-
 <td>
-
 13
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:left">
-
 Margin
-
 </td>
-
 <td>
-
 1,474
-
 </td>
-
 <td>
-
 20.258
-
 </td>
-
 <td>
-
 38.755
-
 </td>
-
 <td>
-
-\-51
-
+-51
 </td>
-
 <td>
-
-\-11
-
+-11
 </td>
-
 <td>
-
 42
-
 </td>
-
 <td>
-
 133
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:left">
-
 Rainfall\_mm
-
 </td>
-
 <td>
-
 1,474
-
 </td>
-
 <td>
-
 2.821
-
 </td>
-
 <td>
-
 5.169
-
 </td>
-
 <td>
-
 0.000
-
 </td>
-
 <td>
-
 0.000
-
 </td>
-
 <td>
-
 2.800
-
 </td>
-
 <td>
-
 26.200
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:left">
-
 Wind\_mph
-
 </td>
-
 <td>
-
 1,474
-
 </td>
-
 <td>
-
 7.430
-
 </td>
-
 <td>
-
 5.267
-
 </td>
-
 <td>
-
 0
-
 </td>
-
 <td>
-
 2
-
 </td>
-
 <td>
-
 11
-
 </td>
-
 <td>
-
 20
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:left">
-
 Meters\_per\_min
-
 </td>
-
 <td>
-
 1,474
-
 </td>
-
 <td>
-
 130.702
-
 </td>
-
 <td>
-
 9.913
-
 </td>
-
 <td>
-
 93.902
-
 </td>
-
 <td>
-
 124.020
-
 </td>
-
 <td>
-
 137.629
-
 </td>
-
 <td>
-
 173.652
-
 </td>
-
 </tr>
-
 <tr>
-
 <td style="text-align:left">
-
 best\_on\_ground
-
 </td>
-
 <td>
-
 1,474
-
 </td>
-
 <td>
-
 0.033
-
 </td>
-
 <td>
-
 0.179
-
 </td>
-
 <td>
-
 0
-
 </td>
-
 <td>
-
 0
-
 </td>
-
 <td>
-
 0
-
 </td>
-
 <td>
-
 1
-
 </td>
-
 </tr>
-
 <tr>
-
 <td colspan="8" style="border-bottom: 1px solid black">
-
 </td>
-
 </tr>
-
 </table>
 
 <br>
@@ -1303,8 +872,7 @@ value of your variable of interest shows up in your data set.
 If you run the following chunk of code, you will get a density plot for
 the variable `GameTotalDistance_km`. This plot captures the full
 distribution, rather than just a subet of the distribution’s ‘moments’
-(.e.g, mean, variance,
-etc.):
+(.e.g, mean, variance, etc.):
 
 ``` r
 plot(density(AFL_data_set$GameTotalDistance_km), main='Total Distance Run',
@@ -1318,8 +886,7 @@ in a typical game; some players run a bit more, some players run a lot
 less), but it also masks a lot of cross-sectional variation. For
 instance, how does the distribution of running distance vary by playing
 position? With R, this sort of analysis is fairly trivial to execute -
-just run a piece of code like the
-following:
+just run a piece of code like the following:
 
 ``` r
 plot(density(filter(AFL_data_set, Position == "MIDFIELD")$GameTotalDistance_km), col='red', main='Total Distance Run',
@@ -1386,8 +953,9 @@ cor(grouped$total_goals, grouped$margin)
 Third, we can also use a regression to quantify the association between
 two variables. A neat feature of regression is that it also allows us to
 include additional variables (‘controls’) in the model. This can be
-especially powerful if we suspect that a confounding variable is creating
-(or masking) a relationship between the two variables of interest.
+especially powerful if we suspect that a confounding variable is
+creating (or masking) a relationship between the two variables of
+interest.
 
 In the follow examples, we will regress margin on total goals by using
 the `lm()` function. The first model you will run assumes a simple
