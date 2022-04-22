@@ -1,6 +1,6 @@
 # Applying Concepts From Performance Management: Using R to Work With Performance Data
 
-This repo contains the class materials, code, and data for the University of Melbourne module on performance management, data science, and R. You will need to access the official course website on Canvas to access the class videos and Zoom links.
+This repo contains the class materials, code, and data for the University of Melbourne module on performance management, data science, and R. You will need to use the official course website on the LMS to access the class videos and Zoom links.
 
 The contents of each folder in the repo is fairly self-explanatory.
 
@@ -12,7 +12,7 @@ This folder contains the slides covered in class. Click on the pdfs to view the 
 
 This folder contains everything you will need to complete the class's data task. 
 
-Click on `Preparation.md` to open and view the preparation material for the data task. You can work your way through this document on your own before our live workshop. 
+Click on `Preparation.md` to open and view the preparation material for the data task. You need to work your way through this document on your own before our live workshop. 
 
 `AFL_data_set.csv` contains the data set for the data task. `data_dictionary.csv` is the code book for the data set you will use for the data task.
 

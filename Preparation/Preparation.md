@@ -1,7 +1,7 @@
 Getting to Know R: Exploring the AFL Data Set
 ================
 Patrick J. Ferguson
-May 2021
+April 2022
 
 ## Overview
 
@@ -52,7 +52,7 @@ source editor, the console, the environment pane and the browser pane.
 
 For most applications, you will work with RStudio in the following
 manner. You will write and run your code from a script in the source
-editor. Output from your code is repoted in the console. If you created
+editor. Output from your code is reported in the console. If you created
 an object with your code (e.g., data frame/tibble, function, etc), you
 can interact with this object in the environment pane. For instance, you
 can open and inspect your data from here. Finally, you can view your
@@ -113,7 +113,7 @@ Having set your working directory, you now want to store the raw data
 file we will be working with on the desktop.
 
 First, you need to download the AFL data set from the course website on
-Canvas. The data set can also be accessed from the `Preparation` folder
+the LMS. The data set can also be accessed from the `Preparation` folder
 on the Github page for this module (click on `AFL_data_set.csv` then
 click `Raw`; copy and paste the contents to a plain text file and save
 as `AFL_data_set.csv` on your desktop).
@@ -156,7 +156,7 @@ Great. You are now ready to get your hands dirty. One final thing I will
 mention is that you do not need to install a package every time you want
 to use it. Once a packaged has been installed, it remains on your local
 machine (unless you choose to remove it). However, you do need to load
-installed packages each time your start a new session in R. A good habit
+installed packages each time you start a new session in R. A good habit
 to get into is to start each of your scripts with a chunk of code that
 loads all the packages that you commonly use.
 
@@ -225,9 +225,9 @@ can we learn from this output?
     observations) and 14 variables (or measures).
       - As I explained in class, each row is a player-game observation
         (i.e., a player’s performance measures for an individual game).
-  - The second row down gives us the names of the first eight variables
+  - The second row down gives us the names of the first six variables
     in our data set. The notes at the bottom of the table tell us that
-    there are ‘6 more variables’ not reported in the output.
+    there are ‘8 more variables’ not reported in the output.
       - This is a limit of viewing a data set in this fashion: if the
         data set is ‘too wide’, you only see the first few variables.
   - The third row down tells us the ‘types’ of variables in our data
@@ -1346,7 +1346,7 @@ causal claims). While we won’t cover the later in detail in this module
 teach you how to do the former - i.e., understand whether one variable
 is associated with another variable.
 
-Fist, you can use plots and other visuals to understand whether
+First, you can use plots and other visuals to understand whether
 variables are associated with one another. For example, let’s look at
 the relationship between the total number of goals kicked by a team and
 the final margin of the game. As these variables are by definition
@@ -1386,7 +1386,7 @@ cor(grouped$total_goals, grouped$margin)
 Third, we can also use a regression to quantify the association between
 two variables. A neat feature of regression is that it also allows us to
 include additional variables (‘controls’) in the model. This can be
-espcially powerful if we suspect that a confounding variable is creating
+especially powerful if we suspect that a confounding variable is creating
 (or masking) a relationship between the two variables of interest.
 
 In the follow examples, we will regress margin on total goals by using
