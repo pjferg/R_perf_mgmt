@@ -1,6 +1,14 @@
 
 # Set up session
-library(tidyverse)
+# library(tidyverse)
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(readr)
+library(purrr)
+library(tibble)
+library(stringr)
+library(forcats)
 library(stargazer)
 setwd("/Users/pfer/Desktop")
 
@@ -46,6 +54,7 @@ grouped <- AFL_data_set %>%
 cor_matrix <- cor(grouped)
 
 cor_margin <- round(cor_matrix[,10],2)
+cor_margin
 
 plot(grouped$avg_GameTotalDistance_km, grouped$Margin,
      xlab='Avg. Running Distance', ylab='Margin')
@@ -55,8 +64,6 @@ plot(grouped$avg_Disposals, grouped$Margin,
 
 plot(grouped$avg_Tackles, grouped$Margin,
      xlab='Avg. Tackles', ylab='Margin')
-
-# 2c
 
 midfielders <- AFL_data_set %>%
   filter(Position=="MIDFIELD") %>%
@@ -95,6 +102,7 @@ cor_matrix_player_level <- AFL_data_set %>%
   cor()
 
 cor_mins <- round(cor_matrix_player_level[,3],2)
+cor_mins
 
 AFL_data_set <- AFL_data_set %>%
   mutate(Disposals_per_min=Disposals/GameTotalMins,
@@ -105,7 +113,7 @@ AFL_data_set <- AFL_data_set %>%
 
 # Question 4 - Is worker performance within teams interdependent?
 
-# 4a and 4b
+# 4a
 
 interdependent <- AFL_data_set %>%
   group_by(Game_ID) %>%
@@ -114,9 +122,10 @@ interdependent <- AFL_data_set %>%
 
 plot(interdependent$avg_Disposals_mid, interdependent$avg_Goals_fwd,
      xlab='Avg. Disposals per midfielder', ylab='Avg. Goals per forward')
-abline(lm(avg_Goals_fwd ~ avg_Disposals_mid, data = interdependent), col = "blue")
 
-# 4c
+# 4b
+
+abline(lm(avg_Goals_fwd ~ avg_Disposals_mid, data = interdependent), col = "blue")
 
 summary(lm(avg_Goals_fwd ~ avg_Disposals_mid, data = interdependent))
 
@@ -128,13 +137,13 @@ AFL_data_set <- AFL_data_set %>%
   mutate(Wet=ifelse(Rainfall_mm>0, 1, 0),
          Wind=ifelse(Wind_mph>median(Wind_mph), 1, 0))
 
-plot(density(filter(AFL_data_set, Wet == 1)$Disposal_efficiency), col='blue', main='Wet weather as a positive performance shock',
+plot(density(filter(AFL_data_set, Wet == 1)$Disposal_efficiency), col='blue', main='Wet weather as a negative performance shock',
      xlab='Disposal efficiency')
 lines(density(filter(AFL_data_set, Wet == 0)$Disposal_efficiency), col="red")
 legend("topright", legend=c("Wet", "Dry"),
        col=c("blue", "red"), lty=1, cex=0.8)
 
-plot(density(filter(AFL_data_set, Wet == 0)$Tackles), col='red', main='Wet weather as a negative performance shock',
+plot(density(filter(AFL_data_set, Wet == 0)$Tackles), col='red', main='Wet weather as a positive performance shock',
      xlab='Tackles')
 lines(density(filter(AFL_data_set, Wet == 1)$Tackles), col="blue")
 legend("topright", legend=c("Wet", "Dry"),
