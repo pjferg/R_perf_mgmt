@@ -6,8 +6,8 @@
 ]{article}
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
-\usepackage{ifxetex,ifluatex}
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+\usepackage{iftex}
+\ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
@@ -33,12 +33,6 @@
   \KOMAoptions{parskip=half}}
 \makeatother
 \usepackage{xcolor}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
-\hypersetup{
-  hidelinks,
-  pdfcreator={LaTeX via pandoc}}
-\urlstyle{same} % disable monospaced font for URLs
 \usepackage[margin=1in]{geometry}
 \usepackage{color}
 \usepackage{fancyvrb}
@@ -107,9 +101,15 @@
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{-\maxdimen} % remove section numbering
-\ifluatex
+\ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
 
 \author{}
 \date{\vspace{-2.5em}}
@@ -120,7 +120,7 @@
 \section{Getting to Know R: Exploring the AFL Data
 Set}\label{getting-to-know-r-exploring-the-afl-data-set}}
 
-Patrick J. Ferguson April 2022
+Patrick J. Ferguson April 2023
 
 \hypertarget{overview}{%
 \subsection{Overview}\label{overview}}
@@ -314,12 +314,6 @@ you are using a function - \texttt{read\_csv()} - to transform an input
 (our raw data from the csv file) - into an R object - the `tibble'
 (i.e., the tidy-version of a data frame), \texttt{AFL\_data\_set}.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{AFL\_data\_set }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"AFL\_data\_set.csv"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
 If all goes as planned, you should see \texttt{AFL\_data\_set} show up
 in the environment pane:
 
@@ -351,21 +345,21 @@ type the name of the object into your script and hit run:
 
 \begin{verbatim}
 ## # A tibble: 1,474 x 14
-##    Game_ID Player_ID Position GameTotalMins GameTotalDistan… Disposals
-##      <dbl>     <dbl> <chr>            <dbl>            <dbl>     <dbl>
-##  1       1         2 DEFENCE          108.              13.3        17
-##  2       1         5 DEFENCE          115.              14.2        21
-##  3       1         6 MIDFIELD          90.1             12.3        12
-##  4       1         7 DEFENCE          110.              13.2        19
-##  5       1         8 FORWARD          109.              15.2        14
-##  6       1        13 DEFENCE          116.              13.3        15
-##  7       1        14 MIDFIELD         108.              14.3        17
-##  8       1        16 MIDFIELD          95.8             11.9        21
-##  9       1        21 DEFENCE          108.              13.8        11
-## 10       1        22 MIDFIELD          91.8             12.0        14
+##    Game_ID Player_ID Position GameTotalMins GameTotalDistance_km Disposals
+##      <dbl>     <dbl> <chr>            <dbl>                <dbl>     <dbl>
+##  1       1         2 DEFENCE          108.                  13.3        17
+##  2       1         5 DEFENCE          115.                  14.2        21
+##  3       1         6 MIDFIELD          90.1                 12.3        12
+##  4       1         7 DEFENCE          110.                  13.2        19
+##  5       1         8 FORWARD          109.                  15.2        14
+##  6       1        13 DEFENCE          116.                  13.3        15
+##  7       1        14 MIDFIELD         108.                  14.3        17
+##  8       1        16 MIDFIELD          95.8                 11.9        21
+##  9       1        21 DEFENCE          108.                  13.8        11
+## 10       1        22 MIDFIELD          91.8                 12.0        14
 ## # … with 1,464 more rows, and 8 more variables: Disposal_efficiency <dbl>,
-## #   Goals <dbl>, Tackles <dbl>, Marks <dbl>, Clearances <dbl>,
-## #   Margin <dbl>, Rainfall_mm <dbl>, Wind_mph <dbl>
+## #   Goals <dbl>, Tackles <dbl>, Marks <dbl>, Clearances <dbl>, Margin <dbl>,
+## #   Rainfall_mm <dbl>, Wind_mph <dbl>
 \end{verbatim}
 
 You should see some output (a crude table) pop up in your console. What
@@ -416,25 +410,51 @@ structure:
 \end{Shaded}
 
 \begin{longtable}[]{@{}
-  >{\raggedleft\arraybackslash}p{(\columnwidth - 26\tabcolsep) * \real{0.06}}
-  >{\raggedleft\arraybackslash}p{(\columnwidth - 26\tabcolsep) * \real{0.07}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 26\tabcolsep) * \real{0.06}}
-  >{\raggedleft\arraybackslash}p{(\columnwidth - 26\tabcolsep) * \real{0.09}}
-  >{\raggedleft\arraybackslash}p{(\columnwidth - 26\tabcolsep) * \real{0.15}}
-  >{\raggedleft\arraybackslash}p{(\columnwidth - 26\tabcolsep) * \real{0.06}}
-  >{\raggedleft\arraybackslash}p{(\columnwidth - 26\tabcolsep) * \real{0.14}}
-  >{\raggedleft\arraybackslash}p{(\columnwidth - 26\tabcolsep) * \real{0.03}}
-  >{\raggedleft\arraybackslash}p{(\columnwidth - 26\tabcolsep) * \real{0.05}}
-  >{\raggedleft\arraybackslash}p{(\columnwidth - 26\tabcolsep) * \real{0.03}}
-  >{\raggedleft\arraybackslash}p{(\columnwidth - 26\tabcolsep) * \real{0.07}}
-  >{\raggedleft\arraybackslash}p{(\columnwidth - 26\tabcolsep) * \real{0.04}}
-  >{\raggedleft\arraybackslash}p{(\columnwidth - 26\tabcolsep) * \real{0.08}}
-  >{\raggedleft\arraybackslash}p{(\columnwidth - 26\tabcolsep) * \real{0.06}}@{}}
-\toprule
-Game\_ID & Player\_ID & Position & GameTotalMins & GameTotalDistance\_km
-& Disposals & Disposal\_efficiency & Goals & Tackles & Marks &
-Clearances & Margin & Rainfall\_mm & Wind\_mph \\
-\midrule
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 26\tabcolsep) * \real{0.0714}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 26\tabcolsep) * \real{0.0714}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 26\tabcolsep) * \real{0.0714}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 26\tabcolsep) * \real{0.0714}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 26\tabcolsep) * \real{0.0714}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 26\tabcolsep) * \real{0.0714}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 26\tabcolsep) * \real{0.0714}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 26\tabcolsep) * \real{0.0714}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 26\tabcolsep) * \real{0.0714}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 26\tabcolsep) * \real{0.0714}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 26\tabcolsep) * \real{0.0714}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 26\tabcolsep) * \real{0.0714}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 26\tabcolsep) * \real{0.0714}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 26\tabcolsep) * \real{0.0714}}@{}}
+\toprule()
+\begin{minipage}[b]{\linewidth}\raggedleft
+Game\_ID
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Player\_ID
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Position
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+GameTotalMins
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+GameTotalDistance\_km
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Disposals
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Disposal\_efficiency
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Goals
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Tackles
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Marks
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Clearances
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Margin
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Rainfall\_mm
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Wind\_mph
+\end{minipage} \\
+\midrule()
 \endhead
 1 & 2 & DEFENCE & 108.5 & 13.2552 & 17 & 58.8 & 0 & 4 & 4 & 2 & 30 & 1.2
 & 16 \\
@@ -456,7 +476,7 @@ Clearances & Margin & Rainfall\_mm & Wind\_mph \\
 1.2 & 16 \\
 1 & 22 & MIDFIELD & 91.8 & 12.0372 & 14 & 71.4 & 1 & 5 & 4 & 2 & 30 &
 1.2 & 16 \\
-\bottomrule
+\bottomrule()
 \end{longtable}
 
 To get a better sense of how to interpret the contents of our data set,
@@ -518,28 +538,57 @@ look at your data set to confirm that the new variables now show up:
 \end{Shaded}
 
 \begin{longtable}[]{@{}
-  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.05}}
-  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.06}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.05}}
-  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.07}}
-  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.12}}
-  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.05}}
-  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.11}}
-  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.03}}
-  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.04}}
-  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.03}}
-  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.06}}
-  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.03}}
-  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.07}}
-  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.05}}
-  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.09}}
-  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.09}}@{}}
-\toprule
-Game\_ID & Player\_ID & Position & GameTotalMins & GameTotalDistance\_km
-& Disposals & Disposal\_efficiency & Goals & Tackles & Marks &
-Clearances & Margin & Rainfall\_mm & Wind\_mph & Meters\_per\_min &
-best\_on\_ground \\
-\midrule
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.0625}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.0625}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.0625}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.0625}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.0625}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.0625}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.0625}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.0625}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.0625}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.0625}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.0625}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.0625}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.0625}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.0625}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.0625}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.0625}}@{}}
+\toprule()
+\begin{minipage}[b]{\linewidth}\raggedleft
+Game\_ID
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Player\_ID
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Position
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+GameTotalMins
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+GameTotalDistance\_km
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Disposals
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Disposal\_efficiency
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Goals
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Tackles
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Marks
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Clearances
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Margin
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Rainfall\_mm
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Wind\_mph
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Meters\_per\_min
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+best\_on\_ground
+\end{minipage} \\
+\midrule()
 \endhead
 1 & 2 & DEFENCE & 108.5 & 13.2552 & 17 & 58.8 & 0 & 4 & 4 & 2 & 30 & 1.2
 & 16 & 122.1677 & 0 \\
@@ -561,7 +610,7 @@ best\_on\_ground \\
 1.2 & 16 & 127.5166 & 0 \\
 1 & 22 & MIDFIELD & 91.8 & 12.0372 & 14 & 71.4 & 1 & 5 & 4 & 2 & 30 &
 1.2 & 16 & 131.1242 & 0 \\
-\bottomrule
+\bottomrule()
 \end{longtable}
 
 You should seem them as the final two columns in the data set.
@@ -600,9 +649,9 @@ set:
 \end{Shaded}
 
 \begin{longtable}[]{@{}rrrr@{}}
-\toprule
+\toprule()
 Player\_ID & Game\_ID & Meters\_per\_min & best\_on\_ground \\
-\midrule
+\midrule()
 \endhead
 2 & 1 & 122.1677 & 0 \\
 5 & 1 & 123.2946 & 0 \\
@@ -614,7 +663,7 @@ Player\_ID & Game\_ID & Meters\_per\_min & best\_on\_ground \\
 16 & 1 & 123.9562 & 0 \\
 21 & 1 & 127.5166 & 0 \\
 22 & 1 & 131.1242 & 0 \\
-\bottomrule
+\bottomrule()
 \end{longtable}
 
 If you want to `shorten' a long data set (i.e, drop observations), you
@@ -641,28 +690,57 @@ observations from the AFL data set for which
 \end{Shaded}
 
 \begin{longtable}[]{@{}
-  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.05}}
-  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.06}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.05}}
-  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.07}}
-  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.12}}
-  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.05}}
-  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.11}}
-  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.03}}
-  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.04}}
-  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.03}}
-  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.06}}
-  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.03}}
-  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.07}}
-  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.05}}
-  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.09}}
-  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.09}}@{}}
-\toprule
-Game\_ID & Player\_ID & Position & GameTotalMins & GameTotalDistance\_km
-& Disposals & Disposal\_efficiency & Goals & Tackles & Marks &
-Clearances & Margin & Rainfall\_mm & Wind\_mph & Meters\_per\_min &
-best\_on\_ground \\
-\midrule
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.0625}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.0625}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.0625}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.0625}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.0625}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.0625}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.0625}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.0625}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.0625}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.0625}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.0625}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.0625}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.0625}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.0625}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.0625}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 30\tabcolsep) * \real{0.0625}}@{}}
+\toprule()
+\begin{minipage}[b]{\linewidth}\raggedleft
+Game\_ID
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Player\_ID
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Position
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+GameTotalMins
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+GameTotalDistance\_km
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Disposals
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Disposal\_efficiency
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Goals
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Tackles
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Marks
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Clearances
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Margin
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Rainfall\_mm
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Wind\_mph
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Meters\_per\_min
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+best\_on\_ground
+\end{minipage} \\
+\midrule()
 \endhead
 1 & 8 & FORWARD & 109.3 & 15.2498 & 14 & 78.6 & 3 & 4 & 2 & 3 & 30 & 1.2
 & 16 & 139.5224 & 1 \\
@@ -684,7 +762,7 @@ best\_on\_ground \\
 3.4 & 1 & 124.9411 & 1 \\
 8 & 42 & MIDFIELD & 111.5 & 14.8916 & 24 & 70.8 & 4 & 3 & 1 & 3 & 26 &
 3.4 & 1 & 133.5570 & 1 \\
-\bottomrule
+\bottomrule()
 \end{longtable}
 
 \hypertarget{summarizing-our-data}{%
@@ -733,261 +811,31 @@ convert the data from a tibble to a data frame within the function):
 \end{Highlighting}
 \end{Shaded}
 
-Statistic
-
-N
-
-Mean
-
-St.~Dev.
-
-Min
-
-Pctl(25)
-
-Pctl(75)
-
-Max
-
-Game\_ID
-
-1,474
-
-35.307
-
-20.521
-
-1
-
-17
-
-54
-
-70
-
-Player\_ID
-
-1,474
-
-27.988
-
-15.152
-
-1
-
-15
-
-42
-
-53
-
-GameTotalMins
-
-1,474
-
-99.827
-
-13.892
-
-1.320
-
-93.422
-
-108.295
-
-129.520
-
-GameTotalDistance\_km
-
-1,474
-
-12.994
-
-1.703
-
-0.183
-
-12.271
-
-14.023
-
-17.075
-
-Disposals
-
-1,474
-
-17.389
-
-7.364
-
-0
-
-12
-
-22
-
-48
-
-Disposal\_efficiency
-
-1,474
-
-73.396
-
-13.012
-
-0.000
-
-65.875
-
-82.325
-
-100.000
-
-Goals
-
-1,474
-
-0.624
-
-1.023
-
-0
-
-0
-
-1
-
-7
-
-Tackles
-
-1,474
-
-3.212
-
-2.424
-
-0
-
-1
-
-4
-
-18
-
-Marks
-
-1,474
-
-4.102
-
-2.464
-
-0
-
-2
-
-6
-
-14
-
-Clearances
-
-1,474
-
-1.716
-
-2.293
-
-0
-
-0
-
-2
-
-13
-
-Margin
-
-1,474
-
-20.258
-
-38.755
-
--51
-
--11
-
-42
-
-133
-
-Rainfall\_mm
-
-1,474
-
-2.821
-
-5.169
-
-0.000
-
-0.000
-
-2.800
-
-26.200
-
-Wind\_mph
-
-1,474
-
-7.430
-
-5.267
-
-0
-
-2
-
-11
-
-20
-
-Meters\_per\_min
-
-1,474
-
-130.702
-
-9.913
-
-93.902
-
-124.020
-
-137.629
-
-173.652
-
-best\_on\_ground
-
-1,474
-
-0.033
-
-0.179
-
-0
-
-0
-
-0
-
-1
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 0\tabcolsep) * \real{0.3611}}@{}}
+\toprule()
+\endhead
+ \\
+Statistic \\
+ \\
+Game\textbackslash\_ID \\
+Player\textbackslash\_ID \\
+GameTotalMins \\
+GameTotalDistance\textbackslash\_km \\
+Disposals \\
+Disposal\textbackslash\_efficiency \\
+Goals \\
+Tackles \\
+Marks \\
+Clearances \\
+Margin \\
+Rainfall\textbackslash\_mm \\
+Wind\textbackslash\_mph \\
+Meters\textbackslash\_per\textbackslash\_min \\
+best\textbackslash\_on\textbackslash\_ground \\
+ \\
+\bottomrule()
+\end{longtable}
 
 You can also summarize a variable by visualizing its distribution. A
 common way to do so is to produce a density plot (you should have seen

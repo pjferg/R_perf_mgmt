@@ -1,7 +1,15 @@
-Getting to Know R: Exploring the AFL Data Set
-================
-Patrick J. Ferguson
-April 2022
+---
+editor_options:
+  markdown:
+    wrap: 72
+output:
+  html_document:
+    df_print: paged
+---
+
+# Getting to Know R: Exploring the AFL Data Set
+
+Patrick J. Ferguson April 2023
 
 ## Overview
 
@@ -9,7 +17,7 @@ In this tutorial, I will show you how to setup R, perform some basic
 commands, and explore the data set we discussed in class. The purpose of
 this tutorial is to get you started with R and to help you understand
 the properties of the data set. You will also learn some of the
-most-commonly used functions in R. I don’t expect you to be able to
+most-commonly used functions in R. I don't expect you to be able to
 write R code from scratch (at this stage), so I will give you help along
 the way. That said, some of you (many of you?) will have some experience
 working in R. If that is the case, feel free to skip the more elementary
@@ -34,7 +42,7 @@ Before we dive into the data, you need to install R and RStudio. Both
 are freely available online. This installation process is straight
 forward and there is lots of trouble-shooting advice and guidance online
 if you run into any problems (feel free to email me if you have any
-issues that you can’t solve after a few Google searches).
+issues that you can't solve after a few Google searches).
 
 To install R, go to <https://cloud.r-project.org/> Follow the prompts
 and be sure to install the latest version.
@@ -93,7 +101,7 @@ something like the following:
 setwd("C:\Users\username\Desktop")
 ```
 
-You will need to adapt the code I’ve provided above to match the naming
+You will need to adapt the code I've provided above to match the naming
 conventions on your machine (i.e., substitute in your own username,
 etc). Google how to set your working directory if you run into any
 issues. On my machine - a Mac - I type and run the following line of
@@ -129,7 +137,7 @@ You want to see something that looks like the following:
 ### Install and load packages
 
 As I mentioned in my lecture, you will primarily be working with the
-‘tidyverse’ set of packages. As such, you will need to install and load
+'tidyverse' set of packages. As such, you will need to install and load
 the tidyverse package. Installing packages in R is straight-forward and
 follows the same basic convention: specify the name of the package you
 want to install in the `install.packages()` function.
@@ -172,7 +180,7 @@ AFL_data_set <- read_csv("AFL_data_set.csv")
 
 Most of the code you will write in R follows this same basic structure:
 you are using a function - `read_csv()` - to transform an input (our raw
-data from the csv file) - into an R object - the ‘tibble’ (i.e., the
+data from the csv file) - into an R object - the 'tibble' (i.e., the
 tidy-version of a data frame), `AFL_data_set`.
 
 If all goes as planned, you should see `AFL_data_set` show up in the
@@ -200,22 +208,24 @@ type the name of the object into your script and hit run:
 AFL_data_set
 ```
 
-    ## # A tibble: 1,474 x 14
-    ##    Game_ID Player_ID Position GameTotalMins GameTotalDistance_km Disposals
-    ##      <dbl>     <dbl> <chr>            <dbl>                <dbl>     <dbl>
-    ##  1       1         2 DEFENCE          108.                  13.3        17
-    ##  2       1         5 DEFENCE          115.                  14.2        21
-    ##  3       1         6 MIDFIELD          90.1                 12.3        12
-    ##  4       1         7 DEFENCE          110.                  13.2        19
-    ##  5       1         8 FORWARD          109.                  15.2        14
-    ##  6       1        13 DEFENCE          116.                  13.3        15
-    ##  7       1        14 MIDFIELD         108.                  14.3        17
-    ##  8       1        16 MIDFIELD          95.8                 11.9        21
-    ##  9       1        21 DEFENCE          108.                  13.8        11
-    ## 10       1        22 MIDFIELD          91.8                 12.0        14
-    ## # … with 1,464 more rows, and 8 more variables: Disposal_efficiency <dbl>,
-    ## #   Goals <dbl>, Tackles <dbl>, Marks <dbl>, Clearances <dbl>, Margin <dbl>,
-    ## #   Rainfall_mm <dbl>, Wind_mph <dbl>
+```         
+## # A tibble: 1,474 x 14
+##    Game_ID Player_ID Position GameTotalMins GameTotalDistance_km Disposals
+##      <dbl>     <dbl> <chr>            <dbl>                <dbl>     <dbl>
+##  1       1         2 DEFENCE          108.                  13.3        17
+##  2       1         5 DEFENCE          115.                  14.2        21
+##  3       1         6 MIDFIELD          90.1                 12.3        12
+##  4       1         7 DEFENCE          110.                  13.2        19
+##  5       1         8 FORWARD          109.                  15.2        14
+##  6       1        13 DEFENCE          116.                  13.3        15
+##  7       1        14 MIDFIELD         108.                  14.3        17
+##  8       1        16 MIDFIELD          95.8                 11.9        21
+##  9       1        21 DEFENCE          108.                  13.8        11
+## 10       1        22 MIDFIELD          91.8                 12.0        14
+## # … with 1,464 more rows, and 8 more variables: Disposal_efficiency <dbl>,
+## #   Goals <dbl>, Tackles <dbl>, Marks <dbl>, Clearances <dbl>, Margin <dbl>,
+## #   Rainfall_mm <dbl>, Wind_mph <dbl>
+```
 
 You should see some output (a crude table) pop up in your console. What
 can we learn from this output?
@@ -224,13 +234,13 @@ can we learn from this output?
     dimensions 1474x14. That is, our data set contains 1474 rows (or
     observations) and 14 variables (or measures).
     -   As I explained in class, each row is a player-game observation
-        (i.e., a player’s performance measures for an individual game).
+        (i.e., a player's performance measures for an individual game).
 -   The second row down gives us the names of the first six variables in
     our data set. The notes at the bottom of the table tell us that
-    there are ‘8 more variables’ not reported in the output.
+    there are '8 more variables' not reported in the output.
     -   This is a limit of viewing a data set in this fashion: if the
-        data set is ‘too wide’, you only see the first few variables.
--   The third row down tells us the ‘types’ of variables in our data
+        data set is 'too wide', you only see the first few variables.
+-   The third row down tells us the 'types' of variables in our data
     set. You can think of `dbl` as a number, and you can think of `chr`
     as words.
 -   From the fourth row down, you can see the actual data (or
@@ -245,24 +255,24 @@ structure:
 knitr::kable(AFL_data_set[1:10,])
 ```
 
-| Game\_ID | Player\_ID | Position | GameTotalMins | GameTotalDistance\_km | Disposals | Disposal\_efficiency | Goals | Tackles | Marks | Clearances | Margin | Rainfall\_mm | Wind\_mph |
-|---------:|-----------:|:---------|--------------:|----------------------:|----------:|---------------------:|------:|--------:|------:|-----------:|-------:|-------------:|----------:|
-|        1 |          2 | DEFENCE  |         108.5 |               13.2552 |        17 |                 58.8 |     0 |       4 |     4 |          2 |     30 |          1.2 |        16 |
-|        1 |          5 | DEFENCE  |         115.4 |               14.2282 |        21 |                 66.7 |     0 |       6 |     4 |          0 |     30 |          1.2 |        16 |
-|        1 |          6 | MIDFIELD |          90.1 |               12.2865 |        12 |                 66.7 |     0 |       5 |     3 |          2 |     30 |          1.2 |        16 |
-|        1 |          7 | DEFENCE  |         109.8 |               13.1969 |        19 |                 78.9 |     1 |       2 |     2 |          2 |     30 |          1.2 |        16 |
-|        1 |          8 | FORWARD  |         109.3 |               15.2498 |        14 |                 78.6 |     3 |       4 |     2 |          3 |     30 |          1.2 |        16 |
-|        1 |         13 | DEFENCE  |         116.5 |               13.2598 |        15 |                 86.7 |     0 |       1 |     6 |          0 |     30 |          1.2 |        16 |
-|        1 |         14 | MIDFIELD |         107.8 |               14.2644 |        17 |                 76.5 |     0 |       2 |     5 |          7 |     30 |          1.2 |        16 |
-|        1 |         16 | MIDFIELD |          95.8 |               11.8750 |        21 |                 71.4 |     3 |       4 |     3 |          6 |     30 |          1.2 |        16 |
-|        1 |         21 | DEFENCE  |         108.2 |               13.7973 |        11 |                 81.8 |     0 |       2 |     2 |          0 |     30 |          1.2 |        16 |
-|        1 |         22 | MIDFIELD |          91.8 |               12.0372 |        14 |                 71.4 |     1 |       5 |     4 |          2 |     30 |          1.2 |        16 |
+| Game_ID | Player_ID | Position | GameTotalMins | GameTotalDistance_km | Disposals | Disposal_efficiency | Goals | Tackles | Marks | Clearances | Margin | Rainfall_mm | Wind_mph |
+|----:|----:|:----|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|
+|       1 |         2 | DEFENCE  |         108.5 |              13.2552 |        17 |                58.8 |     0 |       4 |     4 |          2 |     30 |         1.2 |       16 |
+|       1 |         5 | DEFENCE  |         115.4 |              14.2282 |        21 |                66.7 |     0 |       6 |     4 |          0 |     30 |         1.2 |       16 |
+|       1 |         6 | MIDFIELD |          90.1 |              12.2865 |        12 |                66.7 |     0 |       5 |     3 |          2 |     30 |         1.2 |       16 |
+|       1 |         7 | DEFENCE  |         109.8 |              13.1969 |        19 |                78.9 |     1 |       2 |     2 |          2 |     30 |         1.2 |       16 |
+|       1 |         8 | FORWARD  |         109.3 |              15.2498 |        14 |                78.6 |     3 |       4 |     2 |          3 |     30 |         1.2 |       16 |
+|       1 |        13 | DEFENCE  |         116.5 |              13.2598 |        15 |                86.7 |     0 |       1 |     6 |          0 |     30 |         1.2 |       16 |
+|       1 |        14 | MIDFIELD |         107.8 |              14.2644 |        17 |                76.5 |     0 |       2 |     5 |          7 |     30 |         1.2 |       16 |
+|       1 |        16 | MIDFIELD |          95.8 |              11.8750 |        21 |                71.4 |     3 |       4 |     3 |          6 |     30 |         1.2 |       16 |
+|       1 |        21 | DEFENCE  |         108.2 |              13.7973 |        11 |                81.8 |     0 |       2 |     2 |          0 |     30 |         1.2 |       16 |
+|       1 |        22 | MIDFIELD |          91.8 |              12.0372 |        14 |                71.4 |     1 |       5 |     4 |          2 |     30 |         1.2 |       16 |
 
 To get a better sense of how to interpret the contents of our data set,
 I will interpret the first row reported above.
 
--   In Game\_ID=1, Player\_ID=2, a defender, played 108.5 minutes of
-    game time during which he ran 13.3 km. He accumulated a total of 17
+-   In Game_ID=1, Player_ID=2, a defender, played 108.5 minutes of game
+    time during which he ran 13.3 km. He accumulated a total of 17
     disposals, at an efficiency rate of 58.8%. He kicked 0 goals,
     completed 4 tackles, took 5 marks, and completed 2 clearances. His
     team lost the game by 30 points. During the game, there was 1.2mm of
@@ -272,7 +282,7 @@ I will interpret the first row reported above.
 
 Now that you have a handle on our data set, I am going to get you to
 create some new variables. You will use the function `mutate()` to
-create these variables. I will also get you to use pipes (%&gt;%) to
+create these variables. I will also get you to use pipes (%\>%) to
 string together pieces of code. You should get in the habit of using
 pipes. They can help you to compartmentalize blocks of complex code.
 Pipes also make your code easier to read - something you will appreciate
@@ -305,18 +315,18 @@ look at your data set to confirm that the new variables now show up:
 knitr::kable(AFL_data_set[1:10,])
 ```
 
-| Game\_ID | Player\_ID | Position | GameTotalMins | GameTotalDistance\_km | Disposals | Disposal\_efficiency | Goals | Tackles | Marks | Clearances | Margin | Rainfall\_mm | Wind\_mph | Meters\_per\_min | best\_on\_ground |
-|---------:|-----------:|:---------|--------------:|----------------------:|----------:|---------------------:|------:|--------:|------:|-----------:|-------:|-------------:|----------:|-----------------:|-----------------:|
-|        1 |          2 | DEFENCE  |         108.5 |               13.2552 |        17 |                 58.8 |     0 |       4 |     4 |          2 |     30 |          1.2 |        16 |         122.1677 |                0 |
-|        1 |          5 | DEFENCE  |         115.4 |               14.2282 |        21 |                 66.7 |     0 |       6 |     4 |          0 |     30 |          1.2 |        16 |         123.2946 |                0 |
-|        1 |          6 | MIDFIELD |          90.1 |               12.2865 |        12 |                 66.7 |     0 |       5 |     3 |          2 |     30 |          1.2 |        16 |         136.3651 |                0 |
-|        1 |          7 | DEFENCE  |         109.8 |               13.1969 |        19 |                 78.9 |     1 |       2 |     2 |          2 |     30 |          1.2 |        16 |         120.1903 |                0 |
-|        1 |          8 | FORWARD  |         109.3 |               15.2498 |        14 |                 78.6 |     3 |       4 |     2 |          3 |     30 |          1.2 |        16 |         139.5224 |                1 |
-|        1 |         13 | DEFENCE  |         116.5 |               13.2598 |        15 |                 86.7 |     0 |       1 |     6 |          0 |     30 |          1.2 |        16 |         113.8180 |                0 |
-|        1 |         14 | MIDFIELD |         107.8 |               14.2644 |        17 |                 76.5 |     0 |       2 |     5 |          7 |     30 |          1.2 |        16 |         132.3228 |                0 |
-|        1 |         16 | MIDFIELD |          95.8 |               11.8750 |        21 |                 71.4 |     3 |       4 |     3 |          6 |     30 |          1.2 |        16 |         123.9562 |                0 |
-|        1 |         21 | DEFENCE  |         108.2 |               13.7973 |        11 |                 81.8 |     0 |       2 |     2 |          0 |     30 |          1.2 |        16 |         127.5166 |                0 |
-|        1 |         22 | MIDFIELD |          91.8 |               12.0372 |        14 |                 71.4 |     1 |       5 |     4 |          2 |     30 |          1.2 |        16 |         131.1242 |                0 |
+| Game_ID | Player_ID | Position | GameTotalMins | GameTotalDistance_km | Disposals | Disposal_efficiency | Goals | Tackles | Marks | Clearances | Margin | Rainfall_mm | Wind_mph | Meters_per_min | best_on_ground |
+|----:|----:|:----|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|
+|       1 |         2 | DEFENCE  |         108.5 |              13.2552 |        17 |                58.8 |     0 |       4 |     4 |          2 |     30 |         1.2 |       16 |       122.1677 |              0 |
+|       1 |         5 | DEFENCE  |         115.4 |              14.2282 |        21 |                66.7 |     0 |       6 |     4 |          0 |     30 |         1.2 |       16 |       123.2946 |              0 |
+|       1 |         6 | MIDFIELD |          90.1 |              12.2865 |        12 |                66.7 |     0 |       5 |     3 |          2 |     30 |         1.2 |       16 |       136.3651 |              0 |
+|       1 |         7 | DEFENCE  |         109.8 |              13.1969 |        19 |                78.9 |     1 |       2 |     2 |          2 |     30 |         1.2 |       16 |       120.1903 |              0 |
+|       1 |         8 | FORWARD  |         109.3 |              15.2498 |        14 |                78.6 |     3 |       4 |     2 |          3 |     30 |         1.2 |       16 |       139.5224 |              1 |
+|       1 |        13 | DEFENCE  |         116.5 |              13.2598 |        15 |                86.7 |     0 |       1 |     6 |          0 |     30 |         1.2 |       16 |       113.8180 |              0 |
+|       1 |        14 | MIDFIELD |         107.8 |              14.2644 |        17 |                76.5 |     0 |       2 |     5 |          7 |     30 |         1.2 |       16 |       132.3228 |              0 |
+|       1 |        16 | MIDFIELD |          95.8 |              11.8750 |        21 |                71.4 |     3 |       4 |     3 |          6 |     30 |         1.2 |       16 |       123.9562 |              0 |
+|       1 |        21 | DEFENCE  |         108.2 |              13.7973 |        11 |                81.8 |     0 |       2 |     2 |          0 |     30 |         1.2 |       16 |       127.5166 |              0 |
+|       1 |        22 | MIDFIELD |          91.8 |              12.0372 |        14 |                71.4 |     1 |       5 |     4 |          2 |     30 |         1.2 |       16 |       131.1242 |              0 |
 
 You should seem them as the final two columns in the data set.
 
@@ -328,12 +338,12 @@ many columns), you may want to only look at or work with a subset of
 variables. In the case of long data sets (i.e., many rows), you may want
 to only look at or work with a subset of observations.
 
-You can use the function `select()` to ‘narrow’ a wide data set (i.e.,
-drop variables). For example, let’s say we want to create a tibble that
+You can use the function `select()` to 'narrow' a wide data set (i.e.,
+drop variables). For example, let's say we want to create a tibble that
 contains the following four variables from our AFL data set:
 `Player_ID`, `Game_ID`, and the two new variables we just created -
 `Meters_per_min` and `best_on_ground`. You can run the following code to
-create this ‘narrow’ data set:
+create this 'narrow' data set:
 
 ``` r
 narrow <- AFL_data_set %>%
@@ -348,20 +358,20 @@ set:
 knitr::kable(narrow[1:10,])
 ```
 
-| Player\_ID | Game\_ID | Meters\_per\_min | best\_on\_ground |
-|-----------:|---------:|-----------------:|-----------------:|
-|          2 |        1 |         122.1677 |                0 |
-|          5 |        1 |         123.2946 |                0 |
-|          6 |        1 |         136.3651 |                0 |
-|          7 |        1 |         120.1903 |                0 |
-|          8 |        1 |         139.5224 |                1 |
-|         13 |        1 |         113.8180 |                0 |
-|         14 |        1 |         132.3228 |                0 |
-|         16 |        1 |         123.9562 |                0 |
-|         21 |        1 |         127.5166 |                0 |
-|         22 |        1 |         131.1242 |                0 |
+| Player_ID | Game_ID | Meters_per_min | best_on_ground |
+|----------:|--------:|---------------:|---------------:|
+|         2 |       1 |       122.1677 |              0 |
+|         5 |       1 |       123.2946 |              0 |
+|         6 |       1 |       136.3651 |              0 |
+|         7 |       1 |       120.1903 |              0 |
+|         8 |       1 |       139.5224 |              1 |
+|        13 |       1 |       113.8180 |              0 |
+|        14 |       1 |       132.3228 |              0 |
+|        16 |       1 |       123.9562 |              0 |
+|        21 |       1 |       127.5166 |              0 |
+|        22 |       1 |       131.1242 |              0 |
 
-If you want to ‘shorten’ a long data set (i.e, drop observations), you
+If you want to 'shorten' a long data set (i.e, drop observations), you
 can use the `filter()` command. For example, the following piece of code
 creates a tibble that only contains observations from our AFL data set
 for which `best_on_ground=1` (i.e., observations where the player scored
@@ -379,18 +389,18 @@ observations from the AFL data set for which `best_on_ground=1`:
 knitr::kable(short[1:10,])
 ```
 
-| Game\_ID | Player\_ID | Position | GameTotalMins | GameTotalDistance\_km | Disposals | Disposal\_efficiency | Goals | Tackles | Marks | Clearances | Margin | Rainfall\_mm | Wind\_mph | Meters\_per\_min | best\_on\_ground |
-|---------:|-----------:|:---------|--------------:|----------------------:|----------:|---------------------:|------:|--------:|------:|-----------:|-------:|-------------:|----------:|-----------------:|-----------------:|
-|        1 |          8 | FORWARD  |         109.3 |               15.2498 |        14 |                 78.6 |     3 |       4 |     2 |          3 |     30 |          1.2 |        16 |         139.5224 |                1 |
-|        2 |         29 | MIDFIELD |          99.4 |               14.4787 |        17 |                 82.4 |     2 |       7 |     3 |          3 |    -13 |          0.0 |        12 |         145.6610 |                1 |
-|        3 |         28 | FORWARD  |         101.6 |               14.2604 |        13 |                 92.3 |     2 |       4 |     3 |          1 |     69 |          0.0 |         9 |         140.3583 |                1 |
-|        3 |         42 | MIDFIELD |         104.2 |               14.3412 |        28 |                 71.4 |     2 |       2 |     5 |          5 |     69 |          0.0 |         9 |         137.6315 |                1 |
-|        5 |          9 | FORWARD  |         108.1 |               14.8046 |        18 |                 72.2 |     3 |       4 |     3 |          1 |     48 |          0.0 |         4 |         136.9528 |                1 |
-|        5 |         28 | FORWARD  |         102.2 |               14.6557 |        14 |                 64.3 |     2 |       2 |     4 |          2 |     48 |          0.0 |         4 |         143.4022 |                1 |
-|        7 |         40 | FORWARD  |         117.2 |               14.2475 |        18 |                 77.8 |     3 |       2 |     9 |          0 |     44 |          0.0 |         7 |         121.5657 |                1 |
-|        7 |         42 | FORWARD  |         113.8 |               14.1694 |        25 |                 84.0 |     4 |       3 |     4 |          2 |     44 |          0.0 |         7 |         124.5114 |                1 |
-|        8 |         40 | FORWARD  |         117.2 |               14.6431 |        13 |                 69.2 |     3 |       4 |     6 |          1 |     26 |          3.4 |         1 |         124.9411 |                1 |
-|        8 |         42 | MIDFIELD |         111.5 |               14.8916 |        24 |                 70.8 |     4 |       3 |     1 |          3 |     26 |          3.4 |         1 |         133.5570 |                1 |
+| Game_ID | Player_ID | Position | GameTotalMins | GameTotalDistance_km | Disposals | Disposal_efficiency | Goals | Tackles | Marks | Clearances | Margin | Rainfall_mm | Wind_mph | Meters_per_min | best_on_ground |
+|----:|----:|:----|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|
+|       1 |         8 | FORWARD  |         109.3 |              15.2498 |        14 |                78.6 |     3 |       4 |     2 |          3 |     30 |         1.2 |       16 |       139.5224 |              1 |
+|       2 |        29 | MIDFIELD |          99.4 |              14.4787 |        17 |                82.4 |     2 |       7 |     3 |          3 |    -13 |         0.0 |       12 |       145.6610 |              1 |
+|       3 |        28 | FORWARD  |         101.6 |              14.2604 |        13 |                92.3 |     2 |       4 |     3 |          1 |     69 |         0.0 |        9 |       140.3583 |              1 |
+|       3 |        42 | MIDFIELD |         104.2 |              14.3412 |        28 |                71.4 |     2 |       2 |     5 |          5 |     69 |         0.0 |        9 |       137.6315 |              1 |
+|       5 |         9 | FORWARD  |         108.1 |              14.8046 |        18 |                72.2 |     3 |       4 |     3 |          1 |     48 |         0.0 |        4 |       136.9528 |              1 |
+|       5 |        28 | FORWARD  |         102.2 |              14.6557 |        14 |                64.3 |     2 |       2 |     4 |          2 |     48 |         0.0 |        4 |       143.4022 |              1 |
+|       7 |        40 | FORWARD  |         117.2 |              14.2475 |        18 |                77.8 |     3 |       2 |     9 |          0 |     44 |         0.0 |        7 |       121.5657 |              1 |
+|       7 |        42 | FORWARD  |         113.8 |              14.1694 |        25 |                84.0 |     4 |       3 |     4 |          2 |     44 |         0.0 |        7 |       124.5114 |              1 |
+|       8 |        40 | FORWARD  |         117.2 |              14.6431 |        13 |                69.2 |     3 |       4 |     6 |          1 |     26 |         3.4 |        1 |       124.9411 |              1 |
+|       8 |        42 | MIDFIELD |         111.5 |              14.8916 |        24 |                70.8 |     4 |       3 |     1 |          3 |     26 |         3.4 |        1 |       133.5570 |              1 |
 
 ### Summarizing our data
 
@@ -398,21 +408,23 @@ When working with data, one of the very first things you will want to do
 is summarize the variables of interest in your data set. This is because
 it is often not feasible to look at the value a variable takes for every
 observation in the data set (and even if doing so was feasible, it is
-not clear what you would learn by just ‘eye-balling’ the data).
+not clear what you would learn by just 'eye-balling' the data).
 Statistics tells us that a good way to summarize a variable is describe
 its distribution. I will show you two common, easy-to-interpret ways to
 do this.
 
 You can calculate the summary statistics of a variable. I will get you
 to use the `summary()` function to do this for the variable
-GameTotalDistance\_km:
+GameTotalDistance_km:
 
 ``` r
 summary(AFL_data_set$GameTotalDistance_km)
 ```
 
-    ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-    ##  0.1829 12.2714 13.1155 12.9939 14.0226 17.0754
+```         
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##  0.1829 12.2714 13.1155 12.9939 14.0226 17.0754
+```
 
 A downside of the `summary()` function is that it lacks many of the
 statistics we commonly use in economics and data science (e.g, standard
@@ -430,436 +442,45 @@ convert the data from a tibble to a data frame within the function):
 stargazer(data.frame(AFL_data_set), type = "html")
 ```
 
-<table style="text-align:center">
-<tr>
-<td colspan="8" style="border-bottom: 1px solid black">
-</td>
-</tr>
-<tr>
-<td style="text-align:left">
-Statistic
-</td>
-<td>
-N
-</td>
-<td>
-Mean
-</td>
-<td>
-St. Dev.
-</td>
-<td>
-Min
-</td>
-<td>
-Pctl(25)
-</td>
-<td>
-Pctl(75)
-</td>
-<td>
-Max
-</td>
-</tr>
-<tr>
-<td colspan="8" style="border-bottom: 1px solid black">
-</td>
-</tr>
-<tr>
-<td style="text-align:left">
-Game\_ID
-</td>
-<td>
-1,474
-</td>
-<td>
-35.307
-</td>
-<td>
-20.521
-</td>
-<td>
-1
-</td>
-<td>
-17
-</td>
-<td>
-54
-</td>
-<td>
-70
-</td>
-</tr>
-<tr>
-<td style="text-align:left">
-Player\_ID
-</td>
-<td>
-1,474
-</td>
-<td>
-27.988
-</td>
-<td>
-15.152
-</td>
-<td>
-1
-</td>
-<td>
-15
-</td>
-<td>
-42
-</td>
-<td>
-53
-</td>
-</tr>
-<tr>
-<td style="text-align:left">
-GameTotalMins
-</td>
-<td>
-1,474
-</td>
-<td>
-99.827
-</td>
-<td>
-13.892
-</td>
-<td>
-1.320
-</td>
-<td>
-93.422
-</td>
-<td>
-108.295
-</td>
-<td>
-129.520
-</td>
-</tr>
-<tr>
-<td style="text-align:left">
-GameTotalDistance\_km
-</td>
-<td>
-1,474
-</td>
-<td>
-12.994
-</td>
-<td>
-1.703
-</td>
-<td>
-0.183
-</td>
-<td>
-12.271
-</td>
-<td>
-14.023
-</td>
-<td>
-17.075
-</td>
-</tr>
-<tr>
-<td style="text-align:left">
-Disposals
-</td>
-<td>
-1,474
-</td>
-<td>
-17.389
-</td>
-<td>
-7.364
-</td>
-<td>
-0
-</td>
-<td>
-12
-</td>
-<td>
-22
-</td>
-<td>
-48
-</td>
-</tr>
-<tr>
-<td style="text-align:left">
-Disposal\_efficiency
-</td>
-<td>
-1,474
-</td>
-<td>
-73.396
-</td>
-<td>
-13.012
-</td>
-<td>
-0.000
-</td>
-<td>
-65.875
-</td>
-<td>
-82.325
-</td>
-<td>
-100.000
-</td>
-</tr>
-<tr>
-<td style="text-align:left">
-Goals
-</td>
-<td>
-1,474
-</td>
-<td>
-0.624
-</td>
-<td>
-1.023
-</td>
-<td>
-0
-</td>
-<td>
-0
-</td>
-<td>
-1
-</td>
-<td>
-7
-</td>
-</tr>
-<tr>
-<td style="text-align:left">
-Tackles
-</td>
-<td>
-1,474
-</td>
-<td>
-3.212
-</td>
-<td>
-2.424
-</td>
-<td>
-0
-</td>
-<td>
-1
-</td>
-<td>
-4
-</td>
-<td>
-18
-</td>
-</tr>
-<tr>
-<td style="text-align:left">
-Marks
-</td>
-<td>
-1,474
-</td>
-<td>
-4.102
-</td>
-<td>
-2.464
-</td>
-<td>
-0
-</td>
-<td>
-2
-</td>
-<td>
-6
-</td>
-<td>
-14
-</td>
-</tr>
-<tr>
-<td style="text-align:left">
-Clearances
-</td>
-<td>
-1,474
-</td>
-<td>
-1.716
-</td>
-<td>
-2.293
-</td>
-<td>
-0
-</td>
-<td>
-0
-</td>
-<td>
-2
-</td>
-<td>
-13
-</td>
-</tr>
-<tr>
-<td style="text-align:left">
-Margin
-</td>
-<td>
-1,474
-</td>
-<td>
-20.258
-</td>
-<td>
-38.755
-</td>
-<td>
--51
-</td>
-<td>
--11
-</td>
-<td>
-42
-</td>
-<td>
-133
-</td>
-</tr>
-<tr>
-<td style="text-align:left">
-Rainfall\_mm
-</td>
-<td>
-1,474
-</td>
-<td>
-2.821
-</td>
-<td>
-5.169
-</td>
-<td>
-0.000
-</td>
-<td>
-0.000
-</td>
-<td>
-2.800
-</td>
-<td>
-26.200
-</td>
-</tr>
-<tr>
-<td style="text-align:left">
-Wind\_mph
-</td>
-<td>
-1,474
-</td>
-<td>
-7.430
-</td>
-<td>
-5.267
-</td>
-<td>
-0
-</td>
-<td>
-2
-</td>
-<td>
-11
-</td>
-<td>
-20
-</td>
-</tr>
-<tr>
-<td style="text-align:left">
-Meters\_per\_min
-</td>
-<td>
-1,474
-</td>
-<td>
-130.702
-</td>
-<td>
-9.913
-</td>
-<td>
-93.902
-</td>
-<td>
-124.020
-</td>
-<td>
-137.629
-</td>
-<td>
-173.652
-</td>
-</tr>
-<tr>
-<td style="text-align:left">
-best\_on\_ground
-</td>
-<td>
-1,474
-</td>
-<td>
-0.033
-</td>
-<td>
-0.179
-</td>
-<td>
-0
-</td>
-<td>
-0
-</td>
-<td>
-0
-</td>
-<td>
-1
-</td>
-</tr>
-<tr>
-<td colspan="8" style="border-bottom: 1px solid black">
-</td>
-</tr>
-</table>
++-------------------------+
+|                         |
++-------------------------+
+| Statistic               |
++-------------------------+
+|                         |
++-------------------------+
+| Game\\\_ID              |
++-------------------------+
+| Player\\\_ID            |
++-------------------------+
+| GameTotalMins           |
++-------------------------+
+| GameTotalDistance\\\_km |
++-------------------------+
+| Disposals               |
++-------------------------+
+| Disposal\\\_efficiency  |
++-------------------------+
+| Goals                   |
++-------------------------+
+| Tackles                 |
++-------------------------+
+| Marks                   |
++-------------------------+
+| Clearances              |
++-------------------------+
+| Margin                  |
++-------------------------+
+| Rainfall\\\_mm          |
++-------------------------+
+| Wind\\\_mph             |
++-------------------------+
+| Meters\\\_per\\\_min    |
++-------------------------+
+| best\\\_on\\\_ground    |
++-------------------------+
+|                         |
++-------------------------+
 
 <br>
 
@@ -871,7 +492,7 @@ value of your variable of interest shows up in your data set.
 
 If you run the following chunk of code, you will get a density plot for
 the variable `GameTotalDistance_km`. This plot captures the full
-distribution, rather than just a subet of the distribution’s ‘moments’
+distribution, rather than just a subet of the distribution's 'moments'
 (.e.g, mean, variance, etc.):
 
 ``` r
@@ -901,20 +522,20 @@ legend("topright", legend=c("Midfield", "Forward", "Defender"),
 
 ### Explore relationships between variables
 
-Most of the time when we work with data, we aren’t just interested in
+Most of the time when we work with data, we aren't just interested in
 looking at variables by themselves. Instead, we most often want to know
 how variables can be related to each other. How are variables
 correlated? How can one variable be used to predict another? How does
 one variable cause another? To answer these sorts of questions, we need
 to understand how variables are related (we also need to impose a set of
 assumptions on the underlying data generating process if we want to make
-causal claims). While we won’t cover the later in detail in this module
-(this is a hugely important topic, but one for another class…), we will
-teach you how to do the former - i.e., understand whether one variable
-is associated with another variable.
+causal claims). While we won't cover the later in detail in this module
+(this is a hugely important topic, but one for another class...), we
+will teach you how to do the former - i.e., understand whether one
+variable is associated with another variable.
 
 First, you can use plots and other visuals to understand whether
-variables are associated with one another. For example, let’s look at
+variables are associated with one another. For example, let's look at
 the relationship between the total number of goals kicked by a team and
 the final margin of the game. As these variables are by definition
 mechanically related, we expect a strong positive relationship to show
@@ -948,11 +569,13 @@ final margin of the game:
 cor(grouped$total_goals, grouped$margin)
 ```
 
-    ## [1] 0.772114
+```         
+## [1] 0.772114
+```
 
 Third, we can also use a regression to quantify the association between
 two variables. A neat feature of regression is that it also allows us to
-include additional variables (‘controls’) in the model. This can be
+include additional variables ('controls') in the model. This can be
 especially powerful if we suspect that a confounding variable is
 creating (or masking) a relationship between the two variables of
 interest.
@@ -967,24 +590,26 @@ number of goals a team scores and the margin of the game.
 summary(lm(margin~total_goals, data = grouped))
 ```
 
-    ## 
-    ## Call:
-    ## lm(formula = margin ~ total_goals, data = grouped)
-    ## 
-    ## Residuals:
-    ##     Min      1Q  Median      3Q     Max 
-    ## -53.190 -17.445  -0.225  18.073  65.266 
-    ## 
-    ## Coefficients:
-    ##             Estimate Std. Error t value Pr(>|t|)    
-    ## (Intercept) -69.1788     9.5968  -7.208 7.42e-10 ***
-    ## total_goals   6.4913     0.6627   9.796 2.01e-14 ***
-    ## ---
-    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-    ## 
-    ## Residual standard error: 24.96 on 65 degrees of freedom
-    ## Multiple R-squared:  0.5962, Adjusted R-squared:  0.5899 
-    ## F-statistic: 95.95 on 1 and 65 DF,  p-value: 2.012e-14
+```         
+## 
+## Call:
+## lm(formula = margin ~ total_goals, data = grouped)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -53.190 -17.445  -0.225  18.073  65.266 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) -69.1788     9.5968  -7.208 7.42e-10 ***
+## total_goals   6.4913     0.6627   9.796 2.01e-14 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 24.96 on 65 degrees of freedom
+## Multiple R-squared:  0.5962, Adjusted R-squared:  0.5899 
+## F-statistic: 95.95 on 1 and 65 DF,  p-value: 2.012e-14
+```
 
 ``` r
 grouped_2 <- AFL_data_set %>%
@@ -994,38 +619,40 @@ grouped_2 <- AFL_data_set %>%
 summary(lm(margin~total_goals+wind+rainfall, data = grouped_2))
 ```
 
-    ## 
-    ## Call:
-    ## lm(formula = margin ~ total_goals + wind + rainfall, data = grouped_2)
-    ## 
-    ## Residuals:
-    ##     Min      1Q  Median      3Q     Max 
-    ## -56.795 -17.069   1.109  18.009  62.065 
-    ## 
-    ## Coefficients:
-    ##              Estimate Std. Error t value Pr(>|t|)    
-    ## (Intercept) -80.26043   11.76090  -6.824 4.04e-09 ***
-    ## total_goals   6.76716    0.68263   9.913 1.76e-14 ***
-    ## wind          0.95891    0.60619   1.582    0.119    
-    ## rainfall      0.04296    0.60371   0.071    0.943    
-    ## ---
-    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-    ## 
-    ## Residual standard error: 24.83 on 63 degrees of freedom
-    ## Multiple R-squared:  0.6127, Adjusted R-squared:  0.5943 
-    ## F-statistic: 33.23 on 3 and 63 DF,  p-value: 5.326e-13
+```         
+## 
+## Call:
+## lm(formula = margin ~ total_goals + wind + rainfall, data = grouped_2)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -56.795 -17.069   1.109  18.009  62.065 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) -80.26043   11.76090  -6.824 4.04e-09 ***
+## total_goals   6.76716    0.68263   9.913 1.76e-14 ***
+## wind          0.95891    0.60619   1.582    0.119    
+## rainfall      0.04296    0.60371   0.071    0.943    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 24.83 on 63 degrees of freedom
+## Multiple R-squared:  0.6127, Adjusted R-squared:  0.5943 
+## F-statistic: 33.23 on 3 and 63 DF,  p-value: 5.326e-13
+```
 
-As we can see in the above output, the coefficient on total\_goals is
+As we can see in the above output, the coefficient on total_goals is
 both positive and statistically significant at the 1% level. This is not
 a great revelation, but it nonetheless makes sense: teams that kick more
 goals, win games by a greater margin.
 
 As a quick aside, you may be wondering why the coefficient on
-total\_goals is larger than six (i.e., the number of points a team
-scores when they kick a goal). I’ll leave it to you to work out why this
-might be the case - but I will provide a hint: because game time is
-finite, when a team scores a goal, this imposes an opportunity cost on
-the opposition…
+total_goals is larger than six (i.e., the number of points a team scores
+when they kick a goal). I'll leave it to you to work out why this might
+be the case - but I will provide a hint: because game time is finite,
+when a team scores a goal, this imposes an opportunity cost on the
+opposition...
 
 ### Recap and conclusion
 
@@ -1040,9 +667,9 @@ Hopefully, this tutorial has also given you taste for the sort of
 analysis you can perform using R. As I stated earlier in class, R is a
 great language that you can learn on your own using free online
 resources. And, one final comment: What I have taught you has real-world
-applications; in fact, it is excatly the sort of basic ‘data science’
+applications; in fact, it is excatly the sort of basic 'data science'
 work that goes on in industry. As such, many employers are very keen to
 hire graduates for accounting and finance roles that have a solid grasp
-of R…
+of R...
 
 ![](Images/data_science_jobs.jpg)
